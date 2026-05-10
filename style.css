@@ -1177,8 +1177,15 @@ section { padding: var(--gap-xl) 0; }
   gap: 1rem;
   flex: 1;
 }
+.tier-grid.tier-grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.8rem;
+}
+@media (max-width: 1100px) {
+  .tier-grid.tier-grid-4 { grid-template-columns: repeat(2, 1fr); }
+}
 @media (max-width: 720px) {
-  .tier-grid { grid-template-columns: 1fr; }
+  .tier-grid, .tier-grid.tier-grid-4 { grid-template-columns: 1fr; }
 }
 .tier-card {
   position: relative;
@@ -1248,6 +1255,29 @@ section { padding: var(--gap-xl) 0; }
 }
 
 .tier-card.tier-pro .tier-amount { color: #5C7C68; }
+
+/* 無制限プラン (VIP) */
+.tier-card.tier-unlimited {
+  background: linear-gradient(180deg, #1B2C4A 0%, #2A4060 100%);
+  color: #F4F2EC;
+  border-color: #B79A5F;
+  box-shadow: 0 12px 32px -12px rgba(27,44,74,0.5);
+}
+.tier-card.tier-unlimited:hover {
+  border-color: #D4B574;
+  transform: translateY(-3px);
+}
+.tier-card.tier-unlimited .tier-name { color: #B79A5F; letter-spacing: 0.22em; }
+.tier-card.tier-unlimited .tier-amount { color: #F4F2EC; }
+.tier-card.tier-unlimited .tier-amount small { color: rgba(244,242,236,0.65); }
+.tier-card.tier-unlimited li { color: rgba(244,242,236,0.85); }
+.tier-card.tier-unlimited li::before { color: #B79A5F; }
+.tier-card.tier-unlimited li b { color: #fff; }
+.tier-badge.tier-badge-vip {
+  background: linear-gradient(135deg, #D4B574 0%, #B79A5F 100%);
+  color: #1B2C4A;
+  box-shadow: 0 4px 12px -4px rgba(183,154,95,0.6);
+}
 
 /* ===========================
    Compare table (大手 vs DRAI)
