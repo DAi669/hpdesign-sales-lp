@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dai669.github.io/hpdesign-sales-lp/sitemap.xml

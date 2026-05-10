@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>送信完了 | 合同会社DRAI</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .thanks-wrap {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 4rem 2rem;
+      background: var(--c-paper);
+      text-align: center;
+    }
+    .thanks-card {
+      max-width: 38rem;
+      background: var(--c-white);
+      border-radius: var(--radius-lg);
+      padding: 3rem 2.4rem;
+      box-shadow: var(--shadow-md);
+    }
+    .thanks-icon {
+      width: 80px; height: 80px;
+      background: var(--c-coral); color: var(--c-ink);
+      border-radius: 50%; margin: 0 auto 1.6rem;
+      display: grid; place-items: center;
+    }
+    .thanks-icon svg { width: 36px; height: 36px; }
+    .thanks-title {
+      font-family: var(--font-jp); font-weight: 900;
+      font-size: clamp(1.6rem, 3.6vw, 2.4rem);
+      margin-bottom: 1rem;
+    }
+    .thanks-title em {
+      font-family: var(--font-serif); font-style: italic;
+      color: var(--c-coral);
+    }
+    .thanks-text {
+      color: var(--c-ink-soft); font-size: 1rem; line-height: 2;
+      margin-bottom: 2rem;
+    }
+    .thanks-text b { color: var(--c-ink); }
+    .thanks-back {
+      display: inline-block;
+      padding: 0.95rem 2rem;
+      background: var(--c-ink); color: var(--c-paper);
+      border-radius: 999px;
+      font-family: var(--font-en); font-weight: 700; font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      transition: all 0.3s var(--ease);
+    }
+    .thanks-back:hover { background: var(--c-coral); color: var(--c-ink); transform: translateY(-2px); }
+  </style>
+</head>
+<body>
+
+<div class="thanks-wrap">
+  <div class="thanks-card">
+    <div class="thanks-icon" aria-hidden="true">
+      <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 20l8 8 16-16"/></svg>
+    </div>
+    <h1 class="thanks-title">送信、<em>ありがとうございました。</em></h1>
+    <p class="thanks-text">
+      お問い合わせを受け付けました。<br>
+      <b>1営業日以内</b> に <code>h.dais0127@gmail.com</code> よりご返信いたします。<br><br>
+      しばらくお待ちください。
+    </p>
+    <a href="index.html" class="thanks-back">トップに戻る →</a>
+  </div>
+</div>
+
+</body>
+</html>
