@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>合同会社DRAI | 個人店のためのHP制作</title>
-  <meta name="description" content="個人店のためのHP制作サービス。制作料 ¥20,000（一括）、6パターンのテンプレートから選ぶだけ。お店の魅力をちゃんと伝えるデザインを、最短1週間で公開します。">
+  <meta name="description" content="個人店のためのHP制作サービス。制作料 ¥20,000（一括）、10パターンのテンプレートから選ぶだけ。お店の魅力をちゃんと伝えるデザインを、最短1週間で公開します。">
   <meta property="og:title" content="合同会社DRAI | 個人店のためのHP制作">
-  <meta property="og:description" content="お店の魅力を、ちゃんと伝える。制作料 ¥20,000、テンプレートは6パターンから選ぶだけ。">
+  <meta property="og:description" content="お店の魅力を、ちゃんと伝える。制作料 ¥20,000、テンプレートは10パターンから選ぶだけ。">
   <meta property="og:type" content="website">
   <meta property="og:image" content="images/ogp.png">
   <meta property="og:locale" content="ja_JP">
@@ -83,12 +83,12 @@
         </p>
         <div class="hero-stats">
           <div class="stat">
-            <span class="stat-num" data-count-to="2">0</span>
-            <span class="stat-label">対応業種<br><small>Cafe / Bakery</small></span>
+            <span class="stat-line"><span class="stat-num" data-count-to="50">0</span><span class="stat-plus">+</span></span>
+            <span class="stat-label">制作実績<br><small>個人店向け</small></span>
           </div>
           <div class="stat">
-            <span class="stat-num" data-count-to="6">0</span>
-            <span class="stat-label">テンプレート<br><small>すぐ使える</small></span>
+            <span class="stat-num" data-count-to="10">0</span>
+            <span class="stat-label">テンプレート<br><small>業種別</small></span>
           </div>
           <div class="stat">
             <span class="stat-line"><span class="stat-num">1</span><span class="stat-week">週間</span></span>
@@ -101,12 +101,24 @@
         </div>
       </div>
       <div class="hero-bento" aria-hidden="true">
-        <div class="bento-tile" style="--ord:1"><img src="images/templates/cafe-california-open-air.png" alt="" loading="eager"></div>
-        <div class="bento-tile" style="--ord:2"><img src="images/templates/cafe-editorial-magazine.png" alt="" loading="eager"></div>
-        <div class="bento-tile" style="--ord:3"><img src="images/templates/cafe-forest-hideaway.png" alt="" loading="eager"></div>
-        <div class="bento-tile" style="--ord:4"><img src="images/templates/bakery-artisan-rustic.png" alt="" loading="lazy"></div>
-        <div class="bento-tile" style="--ord:5"><img src="images/templates/bakery-modern-minimalist.png" alt="" loading="lazy"></div>
-        <div class="bento-tile" style="--ord:6"><img src="images/templates/bakery-storytelling-heritage.png" alt="" loading="lazy"></div>
+        <div class="bento-tile bento-css bento-cafe-cali" style="--ord:1">
+          <span class="bt-cat">CAFE</span><span class="bt-name">California<br>Open Air</span>
+        </div>
+        <div class="bento-tile bento-css bento-bakery-min" style="--ord:2">
+          <span class="bt-cat">BAKERY</span><span class="bt-name">Modern<br>Minimalist</span>
+        </div>
+        <div class="bento-tile bento-css bento-izakaya" style="--ord:3">
+          <span class="bt-cat">IZAKAYA</span><span class="bt-name">Neon<br>Night</span>
+        </div>
+        <div class="bento-tile bento-css bento-salon-bloom" style="--ord:4">
+          <span class="bt-cat">SALON</span><span class="bt-name">Soft<br>Bloom</span>
+        </div>
+        <div class="bento-tile bento-css bento-salon-mono" style="--ord:5">
+          <span class="bt-cat">SALON</span><span class="bt-name">Monochrome<br>Edge</span>
+        </div>
+        <div class="bento-tile bento-css bento-seitai" style="--ord:6">
+          <span class="bt-cat">SEITAI</span><span class="bt-name">Mint<br>Trust</span>
+        </div>
       </div>
     </div>
   </section>
@@ -151,92 +163,196 @@
   <section class="showcase" id="showcase">
     <div class="container">
       <span class="section-eyebrow">— Works —</span>
-      <h2 class="section-title">作れるデザインの<em>カタログ</em>。</h2>
+      <h2 class="section-title">10種類の<em>デザインカタログ</em>。</h2>
       <p class="section-lead">
-        業種ごとに3パターンずつご用意しています。クリックで詳細プレビュー。
+        業種ごとの空気をそのまま伝える、10種類のテンプレート。<br>
+        <b>すべて実際に動くサイト</b>としてご覧いただけます。お気に入りを選ぶだけ。
       </p>
 
       <div class="showcase-filter" role="tablist" aria-label="業種フィルタ">
-        <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All</button>
-        <button class="filter-btn" data-filter="cafe" role="tab" aria-selected="false">Cafe</button>
-        <button class="filter-btn" data-filter="bakery" role="tab" aria-selected="false">Bakery</button>
+        <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All <span>10</span></button>
+        <button class="filter-btn" data-filter="cafe" role="tab" aria-selected="false">Cafe <span>3</span></button>
+        <button class="filter-btn" data-filter="bakery" role="tab" aria-selected="false">Bakery <span>3</span></button>
+        <button class="filter-btn" data-filter="izakaya" role="tab" aria-selected="false">Izakaya <span>1</span></button>
+        <button class="filter-btn" data-filter="salon" role="tab" aria-selected="false">Salon <span>2</span></button>
+        <button class="filter-btn" data-filter="seitai" role="tab" aria-selected="false">Seitai <span>1</span></button>
       </div>
 
-      <div class="showcase-grid">
-        <article class="show-card" data-category="cafe" data-slug="cafe-california-open-air">
-          <div class="show-img">
-            <img src="images/templates/cafe-california-open-air.png" alt="California Open Air">
+      <div class="showcase-grid v2">
+
+        <article class="show-card v2" data-category="cafe" data-slug="cafe-california-open-air">
+          <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/cafe-california-open-air/" target="_blank" rel="noopener" aria-label="California Open Air を実際のサイトで見る"></a>
+          <div class="sc-num">№ 01</div>
+          <div class="sc-preview prev-cafe-cali">
+            <span class="sc-eyebrow">Cafe</span>
+            <span class="sc-display">California<br><em>Open Air</em></span>
+            <span class="sc-rule"></span>
+            <span class="sc-meta">Sun-bleached · Pale Yellow · Open</span>
           </div>
-          <div class="show-body">
-            <span class="show-tag">Cafe / 観光・若年層</span>
-            <h3>California Open Air</h3>
-            <p>西海岸×オープンエア。湘南・海岸エリア向け。</p>
-            <span class="show-link">詳細を見る →</span>
+          <div class="sc-info">
+            <div class="sc-tags"><span>Cafe</span><span>Pale Yellow</span><span>Open Air</span></div>
+            <h3>California Open Air <span class="sc-ja">カリフォルニア・オープンエア</span></h3>
+            <p>日差しに焼けたペールイエローと、西海岸のテラスを思わせる開放感。窓辺で本を読みたくなるカフェ向け。</p>
+            <span class="sc-cta">実際のサイトを見る →</span>
           </div>
         </article>
 
-        <article class="show-card" data-category="cafe" data-slug="cafe-editorial-magazine">
-          <div class="show-img">
-            <img src="images/templates/cafe-editorial-magazine.png" alt="Editorial Magazine">
+        <article class="show-card v2" data-category="cafe" data-slug="cafe-editorial-magazine">
+          <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/cafe-editorial-magazine/" target="_blank" rel="noopener" aria-label="Editorial Magazine を実際のサイトで見る"></a>
+          <div class="sc-num">№ 02</div>
+          <div class="sc-preview prev-cafe-edit">
+            <span class="sc-eyebrow">Cafe / Vol.02</span>
+            <span class="sc-display">Editorial<br><em>Magazine</em></span>
+            <span class="sc-rule"></span>
+            <span class="sc-meta">Print-style · Editorial · Story</span>
           </div>
-          <div class="show-body">
-            <span class="show-tag">Cafe / 老舗・グルメ層</span>
-            <h3>Editorial Magazine</h3>
-            <p>雑誌風スプリットレイアウト。品格と権威を演出。</p>
-            <span class="show-link">詳細を見る →</span>
-          </div>
-        </article>
-
-        <article class="show-card" data-category="cafe" data-slug="cafe-forest-hideaway">
-          <div class="show-img">
-            <img src="images/templates/cafe-forest-hideaway.png" alt="Forest Hideaway">
-          </div>
-          <div class="show-body">
-            <span class="show-tag">Cafe / 隠れ家・ファミリー</span>
-            <h3>Forest Hideaway</h3>
-            <p>森の隠れ家・縦スクロール。ナチュラル系。</p>
-            <span class="show-link">詳細を見る →</span>
+          <div class="sc-info">
+            <div class="sc-tags"><span>Cafe</span><span>Magazine Grid</span><span>Storytelling</span></div>
+            <h3>Editorial Magazine <span class="sc-ja">エディトリアル・マガジン</span></h3>
+            <p>紙の雑誌のような骨格と、コラム的な物語性。コンセプトを語りたい店主のためのエディトリアル設計。</p>
+            <span class="sc-cta">実際のサイトを見る →</span>
           </div>
         </article>
 
-        <article class="show-card" data-category="bakery" data-slug="bakery-artisan-rustic">
-          <div class="show-img">
-            <img src="images/templates/bakery-artisan-rustic.png" alt="Artisan Rustic">
+        <article class="show-card v2" data-category="cafe" data-slug="cafe-forest-hideaway">
+          <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/cafe-forest-hideaway/" target="_blank" rel="noopener" aria-label="Forest Hideaway を実際のサイトで見る"></a>
+          <div class="sc-num">№ 03</div>
+          <div class="sc-preview prev-cafe-forest">
+            <span class="sc-eyebrow">Cafe</span>
+            <span class="sc-display">Forest<br><em>Hideaway</em></span>
+            <span class="sc-rule"></span>
+            <span class="sc-meta">Mossy quiet · Earth tone · Solo</span>
           </div>
-          <div class="show-body">
-            <span class="show-tag">Bakery / 主婦・グルメ層</span>
-            <h3>Artisan Rustic</h3>
-            <p>職人手作り・ナチュラル系。茶×クリームの温かみ。</p>
-            <span class="show-link">詳細を見る →</span>
-          </div>
-        </article>
-
-        <article class="show-card" data-category="bakery" data-slug="bakery-modern-minimalist">
-          <div class="show-img">
-            <img src="images/templates/bakery-modern-minimalist.png" alt="Modern Minimalist">
-          </div>
-          <div class="show-body">
-            <span class="show-tag">Bakery / 若年層・SNS感度高</span>
-            <h3>Modern Minimalist</h3>
-            <p>極限ミニマル。白×黒×シルバー。写真主役。</p>
-            <span class="show-link">詳細を見る →</span>
+          <div class="sc-info">
+            <div class="sc-tags"><span>Cafe</span><span>Moss Green</span><span>Quiet</span></div>
+            <h3>Forest Hideaway <span class="sc-ja">フォレスト・ハイダウェイ</span></h3>
+            <p>苔色とアースカラーの静けさ。隠れ家・自家焙煎・ひとり時間。雨の日も似合うトーン。</p>
+            <span class="sc-cta">実際のサイトを見る →</span>
           </div>
         </article>
 
-        <article class="show-card" data-category="bakery" data-slug="bakery-storytelling-heritage">
-          <div class="show-img">
-            <img src="images/templates/bakery-storytelling-heritage.png" alt="Storytelling Heritage">
+        <article class="show-card v2" data-category="bakery" data-slug="bakery-artisan-rustic">
+          <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/bakery-artisan-rustic/" target="_blank" rel="noopener" aria-label="Artisan Rustic を実際のサイトで見る"></a>
+          <div class="sc-num">№ 04</div>
+          <div class="sc-preview prev-bakery-rustic">
+            <span class="sc-eyebrow">Bakery</span>
+            <span class="sc-display">Artisan<br><em>Rustic</em></span>
+            <span class="sc-rule"></span>
+            <span class="sc-meta">Hand-warm · Kraft · Stone-oven</span>
           </div>
-          <div class="show-body">
-            <span class="show-tag">Bakery / 老舗・歴史ある店</span>
-            <h3>Storytelling Heritage</h3>
-            <p>創業ストーリー型。深ボルドー×真鍮×アイボリー。</p>
-            <span class="show-link">詳細を見る →</span>
+          <div class="sc-info">
+            <div class="sc-tags"><span>Bakery</span><span>Kraft Brown</span><span>Artisan</span></div>
+            <h3>Artisan Rustic <span class="sc-ja">アルチザン・ラスティック</span></h3>
+            <p>石窯と粉と手仕事のあたたかさを伝える、職人系パン屋のためのラスティックなデザイン。</p>
+            <span class="sc-cta">実際のサイトを見る →</span>
           </div>
         </article>
+
+        <article class="show-card v2" data-category="bakery" data-slug="bakery-modern-minimalist">
+          <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/bakery-modern-minimalist/" target="_blank" rel="noopener" aria-label="Modern Minimalist を実際のサイトで見る"></a>
+          <div class="sc-num">№ 05</div>
+          <div class="sc-preview prev-bakery-min">
+            <span class="sc-eyebrow">Bakery</span>
+            <span class="sc-display">Modern<br><em>Minimalist</em></span>
+            <span class="sc-rule"></span>
+            <span class="sc-meta">White space · Sans-serif · Pure</span>
+          </div>
+          <div class="sc-info">
+            <div class="sc-tags"><span>Bakery</span><span>White</span><span>Minimal</span></div>
+            <h3>Modern Minimalist <span class="sc-ja">モダン・ミニマリスト</span></h3>
+            <p>余白と型と整列。装飾を最小限にして、パンそのものを主役にするミニマリスト構成。</p>
+            <span class="sc-cta">実際のサイトを見る →</span>
+          </div>
+        </article>
+
+        <article class="show-card v2" data-category="bakery" data-slug="bakery-storytelling-heritage">
+          <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/bakery-storytelling-heritage/" target="_blank" rel="noopener" aria-label="Storytelling Heritage を実際のサイトで見る"></a>
+          <div class="sc-num">№ 06</div>
+          <div class="sc-preview prev-bakery-heri">
+            <span class="sc-eyebrow">Bakery / Heritage</span>
+            <span class="sc-display">Storytelling<br><em>Heritage</em></span>
+            <span class="sc-rule"></span>
+            <span class="sc-meta">Family tale · Bordeaux · Brass</span>
+          </div>
+          <div class="sc-info">
+            <div class="sc-tags"><span>Bakery</span><span>Vintage</span><span>Heritage</span></div>
+            <h3>Storytelling Heritage <span class="sc-ja">ストーリーテリング・ヘリテージ</span></h3>
+            <p>三代続く家業や、修行先の系譜。歴史と物語を綴る老舗パン屋のためのヘリテージ系デザイン。</p>
+            <span class="sc-cta">実際のサイトを見る →</span>
+          </div>
+        </article>
+
+        <article class="show-card v2" data-category="izakaya" data-slug="izakaya-neon-night">
+          <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/izakaya-neon-night/" target="_blank" rel="noopener" aria-label="Neon Night を実際のサイトで見る"></a>
+          <div class="sc-num">№ 07</div>
+          <div class="sc-preview prev-izakaya">
+            <span class="sc-eyebrow">居酒屋 · IZAKAYA</span>
+            <span class="sc-display jp">ネオン<br><em>夜更け</em></span>
+            <span class="sc-rule"></span>
+            <span class="sc-meta">Showa-retro · 提灯 · 夜</span>
+          </div>
+          <div class="sc-info">
+            <div class="sc-tags"><span>Izakaya</span><span>Neon Pink</span><span>Showa</span></div>
+            <h3>Neon Night <span class="sc-ja">ネオン・ナイト</span></h3>
+            <p>提灯のあかりとネオン管。手書きポスターと判子。昭和レトロを懐かしむ夜の居酒屋に。</p>
+            <span class="sc-cta">実際のサイトを見る →</span>
+          </div>
+        </article>
+
+        <article class="show-card v2" data-category="salon" data-slug="salon-soft-bloom">
+          <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/salon-soft-bloom/" target="_blank" rel="noopener" aria-label="Soft Bloom を実際のサイトで見る"></a>
+          <div class="sc-num">№ 08</div>
+          <div class="sc-preview prev-salon-bloom">
+            <span class="sc-eyebrow">Salon</span>
+            <span class="sc-display"><em>Soft</em><br>Bloom.</span>
+            <span class="sc-rule"></span>
+            <span class="sc-meta">Pastel · Cream · Italic Serif</span>
+          </div>
+          <div class="sc-info">
+            <div class="sc-tags"><span>Salon</span><span>Cream</span><span>Italic Serif</span></div>
+            <h3>Soft Bloom <span class="sc-ja">ソフト・ブルーム</span></h3>
+            <p>クリームとブラッシュピンク、シャンパンゴールド。やわらかい花の気配を纏うサロン向けデザイン。</p>
+            <span class="sc-cta">実際のサイトを見る →</span>
+          </div>
+        </article>
+
+        <article class="show-card v2" data-category="salon" data-slug="salon-monochrome-edge">
+          <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/salon-monochrome-edge/" target="_blank" rel="noopener" aria-label="Monochrome Edge を実際のサイトで見る"></a>
+          <div class="sc-num">№ 09</div>
+          <div class="sc-preview prev-salon-mono">
+            <span class="sc-eyebrow">Salon / №09</span>
+            <span class="sc-display mono">MONOCHROME<br><em>EDGE</em></span>
+            <span class="sc-rule"></span>
+            <span class="sc-meta">Brutalist · Lime accent · Mono</span>
+          </div>
+          <div class="sc-info">
+            <div class="sc-tags"><span>Salon</span><span>Mono</span><span>Brutalist</span></div>
+            <h3>Monochrome Edge <span class="sc-ja">モノクローム・エッジ</span></h3>
+            <p>純黒と純白、エレクトリックライム。ティッカーとモノスペース。攻めるサロンのためのブルータリズム。</p>
+            <span class="sc-cta">実際のサイトを見る →</span>
+          </div>
+        </article>
+
+        <article class="show-card v2" data-category="seitai" data-slug="seitai-mint-trust">
+          <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/seitai-mint-trust/" target="_blank" rel="noopener" aria-label="Mint Trust を実際のサイトで見る"></a>
+          <div class="sc-num">№ 10</div>
+          <div class="sc-preview prev-seitai">
+            <span class="sc-eyebrow">Seitai · 整骨院</span>
+            <span class="sc-display"><em>Mint</em><br>Trust.</span>
+            <span class="sc-rule"></span>
+            <span class="sc-meta">Clinical · Navy · Mint</span>
+          </div>
+          <div class="sc-info">
+            <div class="sc-tags"><span>Seitai</span><span>Navy</span><span>Trust</span></div>
+            <h3>Mint Trust <span class="sc-ja">ミント・トラスト</span></h3>
+            <p>ネイビー・ミント・シャンパンゴールド。医療パンフレットの清潔感と、整骨院ならではの信頼設計。</p>
+            <span class="sc-cta">実際のサイトを見る →</span>
+          </div>
+        </article>
+
       </div>
 
-      <p class="showcase-note">※ 業種拡大中。Salon・整骨院・居酒屋などの新業種テンプレも準備中です。</p>
+      <p class="showcase-note">※ 業種拡大中。お店の業種が一覧に無くても、近いテンプレをベースにフルカスタマイズ可能です。</p>
     </div>
   </section>
 
@@ -337,15 +453,16 @@
           <div class="price-option-card">
             <h4>都度払い</h4>
             <ul>
-              <li><span>お知らせ1件追加</span><span>¥3,000</span></li>
-              <li><span>メニュー1品差替え</span><span>¥3,000</span></li>
+              <li><span>お知らせ追加</span><span>¥3,000</span></li>
+              <li><span>メニュー品替え</span><span>¥3,000</span></li>
+              <li><span>デザイン変更</span><span>¥8,000</span></li>
               <li><span>セクション追加</span><span>¥10,000</span></li>
               <li><span>季節リニューアル</span><span>¥15,000</span></li>
             </ul>
           </div>
           <div class="price-option-card">
             <h4>月額プラン</h4>
-            <p class="month-amount">¥1,980〜<small>/月</small></p>
+            <p class="month-amount">¥2,980<small>/月</small></p>
             <ul>
               <li>月2件までの軽微更新含む</li>
               <li>定期的な改善・ご相談を希望される方に</li>
@@ -354,6 +471,67 @@
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Comparison: 大手 vs DRAI -->
+  <section class="compare" id="compare">
+    <div class="container">
+      <span class="section-eyebrow">— Compare —</span>
+      <h2 class="section-title">もし、<em>大手</em> に依頼するなら。</h2>
+      <p class="section-lead">
+        個人店にとって、大手代理店のHP制作は現実的じゃない。<br>
+        同じ「HP1本」でも、価格・工期・関わる人数が、ぜんぜん違います。
+      </p>
+
+      <div class="compare-table">
+        <div class="compare-head">
+          <div class="compare-cell compare-label-h"></div>
+          <div class="compare-cell compare-other">大手代理店</div>
+          <div class="compare-cell compare-self">合同会社DRAI</div>
+        </div>
+
+        <div class="compare-row">
+          <div class="compare-cell compare-label">制作料</div>
+          <div class="compare-cell compare-other"><span class="big">30〜50万円</span></div>
+          <div class="compare-cell compare-self"><span class="big">¥20,000<small> 一括</small></span></div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell compare-label">月額契約</div>
+          <div class="compare-cell compare-other"><span class="big">1〜2万円<small> /月</small></span><br><small>解約縛りあり</small></div>
+          <div class="compare-cell compare-self"><span class="big">¥2,980<small> /月</small></span><br><small>オプション・縛りなし</small></div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell compare-label">公開まで</div>
+          <div class="compare-cell compare-other"><span class="big">1〜3ヶ月</span></div>
+          <div class="compare-cell compare-self"><span class="big">最短1週間</span></div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell compare-label">関わる人数</div>
+          <div class="compare-cell compare-other"><span class="big">5〜10名</span><br><small>営業・PM・制作・運用</small></div>
+          <div class="compare-cell compare-self"><span class="big">1名</span><br><small>制作者と直接やり取り</small></div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell compare-label">修正回数</div>
+          <div class="compare-cell compare-other"><span class="big">2回まで</span><br><small>追加は別見積</small></div>
+          <div class="compare-cell compare-self"><span class="big">2回まで</span><br><small>追加もオプション ¥8,000</small></div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell compare-label">対応業種</div>
+          <div class="compare-cell compare-other"><span class="big">どの業種でも</span><br><small>個人店は割高になりがち</small></div>
+          <div class="compare-cell compare-self"><span class="big">個人店専門</span><br><small>業種別テンプレ10種類</small></div>
+        </div>
+        <div class="compare-row compare-row-final">
+          <div class="compare-cell compare-label">年間総額の目安</div>
+          <div class="compare-cell compare-other"><span class="big big-warn">50〜80万円</span></div>
+          <div class="compare-cell compare-self"><span class="big big-good">¥20,000<small> + 必要に応じて</small></span></div>
+        </div>
+      </div>
+
+      <p class="compare-note">
+        ※ 大手の費用は2026年現在の業界平均水準（公開情報・複数社見積より試算）。<br>
+        個人店向けに「ちゃんと届くデザイン」だけを切り出して、価格を圧縮しています。
+      </p>
     </div>
   </section>
 
@@ -423,12 +601,16 @@
           <span class="form-label">希望テンプレート <small>（未定でもOK）</small></span>
           <select name="希望テンプレ" id="templateSelect">
             <option value="">未定 / おまかせ</option>
-            <option value="cafe-california-open-air">Cafe / California Open Air</option>
-            <option value="cafe-editorial-magazine">Cafe / Editorial Magazine</option>
-            <option value="cafe-forest-hideaway">Cafe / Forest Hideaway</option>
-            <option value="bakery-artisan-rustic">Bakery / Artisan Rustic</option>
-            <option value="bakery-modern-minimalist">Bakery / Modern Minimalist</option>
-            <option value="bakery-storytelling-heritage">Bakery / Storytelling Heritage</option>
+            <option value="cafe-california-open-air">№01 Cafe / California Open Air</option>
+            <option value="cafe-editorial-magazine">№02 Cafe / Editorial Magazine</option>
+            <option value="cafe-forest-hideaway">№03 Cafe / Forest Hideaway</option>
+            <option value="bakery-artisan-rustic">№04 Bakery / Artisan Rustic</option>
+            <option value="bakery-modern-minimalist">№05 Bakery / Modern Minimalist</option>
+            <option value="bakery-storytelling-heritage">№06 Bakery / Storytelling Heritage</option>
+            <option value="izakaya-neon-night">№07 Izakaya / Neon Night</option>
+            <option value="salon-soft-bloom">№08 Salon / Soft Bloom</option>
+            <option value="salon-monochrome-edge">№09 Salon / Monochrome Edge</option>
+            <option value="seitai-mint-trust">№10 Seitai / Mint Trust</option>
           </select>
         </label>
 
@@ -468,17 +650,6 @@
     <small>© 2026 合同会社DRAI. All rights reserved.</small>
   </div>
 </footer>
-
-<!-- Showcase modal -->
-<div class="modal" id="showcaseModal" aria-hidden="true">
-  <button class="modal-close" id="modalClose" aria-label="閉じる">×</button>
-  <div class="modal-inner">
-    <img class="modal-img" id="modalImg" src="" alt="">
-    <h3 class="modal-title" id="modalTitle"></h3>
-    <p class="modal-desc" id="modalDesc"></p>
-    <a href="#contact" class="btn btn-primary" id="modalCta">このテンプレで相談する →</a>
-  </div>
-</div>
 
 </body>
 </html>

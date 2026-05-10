@@ -104,85 +104,8 @@
     });
   });
 
-  // Showcase modal
-  const modal = document.getElementById('showcaseModal');
-  const modalClose = document.getElementById('modalClose');
-  const modalImg = document.getElementById('modalImg');
-  const modalTitle = document.getElementById('modalTitle');
-  const modalDesc = document.getElementById('modalDesc');
-  const modalCta = document.getElementById('modalCta');
-
-  const templateMeta = {
-    'cafe-california-open-air': {
-      title: 'California Open Air',
-      desc: '西海岸×オープンエアの空気感を伝えるカフェ向けデザイン。海青×砂生成×太陽イエローの開放的なパレット、Manroposフォントで現代的な軽快さ。観光客・若年層・湘南散歩客の心を掴む、SNS映えする標準グリッド型レイアウトです。'
-    },
-    'cafe-editorial-magazine': {
-      title: 'Editorial Magazine',
-      desc: '雑誌の特集記事のような、見出し・キャプション・引用文・誌面番号を効かせたエディトリアルレイアウト。スプリット2カラムでテキスト密度を保ちつつ、大型タイポと余白で読ませる。40代以上のグルメ層・メディア感度高い層に最適。'
-    },
-    'cafe-forest-hideaway': {
-      title: 'Forest Hideaway',
-      desc: '森の隠れ家・ゆったりとした時間が流れる小さなカフェ。葉のモチーフ、丸ゴシック、優しい曲線、Bento グリッドで「居心地の良さ」を視覚化。ファミリー連れ・ペット連れ・隠れ家好きの層にぴったり。'
-    },
-    'bakery-artisan-rustic': {
-      title: 'Artisan Rustic',
-      desc: '職人手作り・ナチュラル系のパン屋。茶×クリーム×小麦色の温かみあるパレット。グレイン質感の背景、Crimson Textの欧文セリフ、引用クォートで店主のこだわりを物語る。30-50代主婦・グルメ層向け。'
-    },
-    'bakery-modern-minimalist': {
-      title: 'Modern Minimalist',
-      desc: '極限ミニマル。白×黒×シルバー、巨大タイポ、写真主役。装飾を最小限に抑え、商品そのものに集中する設計。若い夫婦・SNS感度高い層・モダン志向の店舗に。'
-    },
-    'bakery-storytelling-heritage': {
-      title: 'Storytelling Heritage',
-      desc: '創業ストーリー型・三代記の重厚さ。深ボルドー×真鍮×アイボリーで老舗の品格を演出。紋章・時系列タイムライン・受賞リストで歴史を可視化。創業数十年の老舗パン屋・伝統ある店舗向け。'
-    }
-  };
-
-  showCards.forEach(card => {
-    card.addEventListener('click', () => {
-      const slug = card.dataset.slug;
-      const meta = templateMeta[slug];
-      if (!meta) return;
-      modalImg.src = `images/templates/${slug}.png`;
-      modalImg.alt = meta.title;
-      modalTitle.textContent = meta.title;
-      modalDesc.textContent = meta.desc;
-      modalCta.href = `#contact?template=${slug}`;
-      modalCta.dataset.template = slug;
-      modal.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-    });
-  });
-
-  function closeModal() {
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  }
-  if (modalClose) modalClose.addEventListener('click', closeModal);
-  if (modal) modal.addEventListener('click', (e) => {
-    if (e.target === modal) closeModal();
-  });
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal && modal.getAttribute('aria-hidden') === 'false') closeModal();
-  });
-
-  // Modal CTA → set template select then scroll
-  if (modalCta) {
-    modalCta.addEventListener('click', (e) => {
-      e.preventDefault();
-      const slug = modalCta.dataset.template;
-      const tpl = document.getElementById('templateSelect');
-      if (tpl && slug) {
-        for (const opt of tpl.options) {
-          if (opt.value === slug) { tpl.value = slug; break; }
-        }
-      }
-      closeModal();
-      const contact = document.getElementById('contact');
-      if (contact) contact.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
-    });
-  }
+  // Showcase v2: cards open live URL via overlay <a>. No modal needed.
+  // Legacy modal element kept hidden in DOM for safety; ignore if present.
 
   // URL parameter ?template=xxx → set form select on load
   const urlParams = new URLSearchParams(window.location.search);
