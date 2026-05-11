@@ -162,28 +162,8 @@
     targets.forEach(el => fio.observe(el));
   }
 
-  // (4) 統計数字カウントアップ
-  if (!reduced) {
-    const statNums = document.querySelectorAll('.stat-num[data-count-to]');
-    const countObs = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (!e.isIntersecting || e.target.dataset.counted) return;
-        e.target.dataset.counted = '1';
-        const to = parseInt(e.target.dataset.countTo, 10);
-        const dur = 1400;
-        const start = performance.now();
-        const tick = (t) => {
-          const k = Math.min(1, (t - start) / dur);
-          const eased = 1 - Math.pow(1 - k, 3);
-          e.target.textContent = Math.round(to * eased);
-          if (k < 1) requestAnimationFrame(tick);
-          else e.target.classList.add('counted');
-        };
-        requestAnimationFrame(tick);
-      });
-    }, { threshold: 0.6 });
-    statNums.forEach(n => countObs.observe(n));
-  }
+  // (4) 統計数字カウントアップは既存ロジック（line 44-66）で実行済み。
+  //     ここで再実装すると衝突して 0 で止まる問題があるため削除済み。
 
   // (5) マグネティック CTA ボタン
   if (!reduced && window.matchMedia('(min-width: 901px)').matches) {
