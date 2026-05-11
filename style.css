@@ -1010,7 +1010,7 @@ section { padding: var(--gap-xl) 0; }
   background-image: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.3) 100%), url('https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=1200&q=80&auto=format&fit=crop');
 }
 .cs-th-dental {
-  background-image: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.25) 100%), url('https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=1200&q=80&auto=format&fit=crop');
+  background-image: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.25) 100%), url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1200&q=80&auto=format&fit=crop');
 }
 
 /* ===========================
@@ -1869,3 +1869,36 @@ section { padding: var(--gap-xl) 0; }
 /* === スクロール進捗バー === */
 .scroll-progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 200; background: rgba(28,39,51,0.05); }
 .scroll-progress span { display: block; height: 100%; width: 0%; background: linear-gradient(90deg, var(--c-coral, #F4A537), #E89535); transition: width 0.1s linear; }
+
+/* === Mini/Mid CTA リンクボタン（フォーム廃止後） === */
+.mini-cta-link, .mid-cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 36px;
+  border-radius: 999px;
+  font-family: var(--font-jp, "Noto Sans JP", sans-serif);
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  transition: transform 0.3s cubic-bezier(.2,.8,.2,1), box-shadow 0.3s, background 0.25s;
+  will-change: transform;
+}
+.mini-cta-link {
+  background: var(--c-coral, #F4A537);
+  color: var(--c-ink, #1c2733);
+  box-shadow: 0 12px 28px -8px rgba(244,165,55,0.5);
+}
+.mini-cta-link:hover {
+  background: #FFBC5A;
+  box-shadow: 0 18px 36px -8px rgba(244,165,55,0.7);
+}
+.mid-cta-link {
+  background: var(--c-ink, #1c2733);
+  color: var(--c-coral, #F4A537);
+  box-shadow: 0 14px 32px -8px rgba(28,39,51,0.45);
+}
+.mid-cta-link:hover {
+  background: #2a3848;
+  box-shadow: 0 20px 40px -8px rgba(28,39,51,0.6);
+}

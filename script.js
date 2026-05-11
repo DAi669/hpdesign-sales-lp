@@ -120,19 +120,7 @@
   }
 
   // === 2026-05-12 大規模改修: アニメーション強化 ===
-
-  // (1) スクロール進捗バー
-  const progressBar = document.getElementById('scrollProgressBar');
-  if (progressBar) {
-    const updateProgress = () => {
-      const h = document.documentElement;
-      const total = h.scrollHeight - h.clientHeight;
-      const pct = total > 0 ? Math.max(0, Math.min(100, (h.scrollTop / total) * 100)) : 0;
-      progressBar.style.width = pct + '%';
-    };
-    document.addEventListener('scroll', updateProgress, { passive: true });
-    updateProgress();
-  }
+  // (1) スクロール進捗バーは既存実装（line 9 周辺）で処理済
 
   // (2) Floating Contact (FAB) スクロール後表示
   const fab = document.getElementById('fabContact');
