@@ -1796,34 +1796,49 @@ section { padding: var(--gap-xl) 0; }
   position: relative;
 }
 .mid-cta p { font-size: 0.95rem; line-height: 1.85; max-width: 50ch; position: relative; }
-.mid-cta-form { display: flex; gap: 0.6rem; width: 100%; max-width: 540px; margin-top: 0.4rem; position: relative; }
+.mid-cta-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.4fr auto;
+  gap: 0.6rem;
+  width: 100%;
+  max-width: 760px;
+  margin-top: 0.4rem;
+  position: relative;
+  align-items: center;
+}
 .mid-cta-form input {
-  flex: 1;
-  padding: 14px 18px;
+  width: 100%;
+  padding: 14px 16px;
   border-radius: 999px;
   border: 2px solid var(--c-ink);
   background: rgba(255,255,255,0.92);
-  font-size: 15px;
+  font-size: 14px;
   outline: none;
 }
 .mid-cta-form button {
-  padding: 14px 24px;
+  padding: 14px 22px;
   border-radius: 999px;
   border: none;
   background: var(--c-ink);
   color: var(--c-coral);
   font-weight: 700;
-  font-size: 14px;
+  font-size: 13px;
   cursor: pointer;
   white-space: nowrap;
   transition: transform 0.25s;
 }
 .mid-cta-form button:hover { transform: translateY(-2px); }
 .mid-cta .friction { font-size: 0.78rem; opacity: 0.75; }
+@media (max-width: 900px) {
+  .mid-cta-form { grid-template-columns: 1fr 1fr; }
+  .mid-cta-form input[type="email"] { grid-column: 1 / -1; }
+  .mid-cta-form button { grid-column: 1 / -1; }
+}
 @media (max-width: 640px) {
   .mid-cta { padding: 1.8rem 1.2rem; margin: 2rem 1rem; }
-  .mid-cta-form { flex-direction: column; }
-  .mid-cta-form button { width: 100%; }
+  .mid-cta-form { grid-template-columns: 1fr; }
+  .mid-cta-form input[type="email"] { grid-column: auto; }
+  .mid-cta-form button { width: 100%; grid-column: auto; }
 }
 
 /* === Floating CTA === */
