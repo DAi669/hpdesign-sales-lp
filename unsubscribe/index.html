@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>配信停止 | 合同会社DRAI</title>
+  <style>
+    body {
+      font-family: -apple-system, "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+      max-width: 640px;
+      margin: 80px auto;
+      padding: 0 24px;
+      color: #333;
+      line-height: 1.7;
+    }
+    h1 {
+      font-size: 24px;
+      border-bottom: 2px solid #2b6cb0;
+      padding-bottom: 12px;
+      margin-bottom: 24px;
+    }
+    .wrap {
+      background: #f7fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 32px 28px;
+    }
+    .meta {
+      margin-top: 32px;
+      font-size: 13px;
+      color: #888;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 16px;
+    }
+    .meta code {
+      background: #edf2f7;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+    .sender {
+      margin-top: 28px;
+      font-size: 13px;
+      color: #555;
+    }
+    .err {
+      display: none;
+      color: #c53030;
+      background: #fff5f5;
+      border: 1px solid #fc8181;
+      padding: 12px;
+      border-radius: 6px;
+      margin-top: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>配信停止を受け付けました</h1>
+    <p>今後、合同会社DRAIからの営業メールはお送りいたしません。</p>
+    <p>ご対応にお時間をいただき、誠にありがとうございました。</p>
+    <p>もし内容にご不明点がある場合は、お手数ですが下記の連絡先までご返信ください。</p>
+
+    <div class="err" id="err">
+      <strong>エラー</strong>: リンクの token が不正です。
+      お手数ですが、お受け取りいただいたメールに直接ご返信ください。
+    </div>
+
+    <div class="sender">
+      合同会社DRAI<br>
+      〒160-0023 東京都新宿区西新宿3丁目2-9 新宿ワシントンビル本館<br>
+      連絡先: h.dais0127@gmail.com
+    </div>
+
+    <div class="meta">
+      tracking: <code id="t">-</code>
+    </div>
+  </div>
+
+  <script>
+    // URL クエリから e (email) と t (token) を取り出して Formspree に POST。
+    // 受信者は何もしなくて良い（ページ閲覧だけで CEO に通知される）。
+    (function () {
+      var params = new URLSearchParams(location.search);
+      var email = params.get("e") || "";
+      var token = params.get("t") || "";
+
+      var tEl = document.getElementById("t");
+      if (token) {
+        tEl.textContent = token.substring(0, 8) + "...";
+      } else {
+        document.getElementById("err").style.display = "block";
+        return;
+      }
+
+      // Formspree エンドポイント（LP と同じ mykobobe を再利用、subject で識別）
+      var formspreeUrl = "https://formspree.io/f/mykobobe";
+      try {
+        fetch(formspreeUrl, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify({
+            _subject: "[OPT-OUT] " + email + " 配信停止リクエスト",
+            optout_email: email,
+            optout_token: token,
+            ts: new Date().toISOString(),
+            user_agent: navigator.userAgent
+          })
+        }).catch(function () {
+          // 通知失敗してもユーザーには見せない（配信停止自体は記録済）
+        });
+      } catch (e) {
+        // fetch 非対応ブラウザは諦める
+      }
+    })();
+  </script>
+</body>
+</html>
