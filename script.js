@@ -118,4 +118,103 @@
       }
     }
   }
+
+  // === 2026-05-12 大規模改修: アニメーション強化 ===
+
+  // (1) スクロール進捗バー
+  const progressBar = document.getElementById('scrollProgressBar');
+  if (progressBar) {
+    const updateProgress = () => {
+      const h = document.documentElement;
+      const total = h.scrollHeight - h.clientHeight;
+      const pct = total > 0 ? Math.max(0, Math.min(100, (h.scrollTop / total) * 100)) : 0;
+      progressBar.style.width = pct + '%';
+    };
+    document.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+  }
+
+  // (2) Floating Contact (FAB) スクロール後表示
+  const fab = document.getElementById('fabContact');
+  if (fab) {
+    const showFab = () => {
+      if (window.scrollY > 600) fab.classList.add('shown');
+      else fab.classList.remove('shown');
+    };
+    document.addEventListener('scroll', showFab, { passive: true });
+    showFab();
+  }
+
+  // (3) スクロールリビール（fade-in）
+  if ('IntersectionObserver' in window && !reduced) {
+    const targets = document.querySelectorAll(
+      '.pillar, .show-card, .case-card, .tier-card, .compare-row, .flow-step, .faq-item, .price-tiers, .mid-cta, .mini-cta-inner, .section-title, .section-lead, .about-pillars'
+    );
+    targets.forEach(el => el.classList.add('fade-in'));
+    const fio = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('in'), i * 24);
+          fio.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    targets.forEach(el => fio.observe(el));
+  }
+
+  // (4) 統計数字カウントアップ
+  if (!reduced) {
+    const statNums = document.querySelectorAll('.stat-num[data-count-to]');
+    const countObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting || e.target.dataset.counted) return;
+        e.target.dataset.counted = '1';
+        const to = parseInt(e.target.dataset.countTo, 10);
+        const dur = 1400;
+        const start = performance.now();
+        const tick = (t) => {
+          const k = Math.min(1, (t - start) / dur);
+          const eased = 1 - Math.pow(1 - k, 3);
+          e.target.textContent = Math.round(to * eased);
+          if (k < 1) requestAnimationFrame(tick);
+          else e.target.classList.add('counted');
+        };
+        requestAnimationFrame(tick);
+      });
+    }, { threshold: 0.6 });
+    statNums.forEach(n => countObs.observe(n));
+  }
+
+  // (5) マグネティック CTA ボタン
+  if (!reduced && window.matchMedia('(min-width: 901px)').matches) {
+    document.querySelectorAll('[data-magnet]').forEach(btn => {
+      btn.addEventListener('mousemove', (e) => {
+        const r = btn.getBoundingClientRect();
+        const x = e.clientX - r.left - r.width / 2;
+        const y = e.clientY - r.top - r.height / 2;
+        btn.style.transform = `translate(${x * 0.2}px, ${y * 0.3}px)`;
+      });
+      btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+    });
+  }
+
+  // (6) Hero Bento タイル軽い視差（マウス追従）
+  if (!reduced && window.matchMedia('(min-width: 901px)').matches) {
+    const bento = document.querySelector('.hero-bento');
+    if (bento) {
+      const tiles = bento.querySelectorAll('.bento-tile');
+      bento.addEventListener('mousemove', (e) => {
+        const r = bento.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        tiles.forEach((t, i) => {
+          const depth = (i % 3 + 1) * 4;
+          t.style.transform = `translate(${x * depth}px, ${y * depth}px)`;
+        });
+      });
+      bento.addEventListener('mouseleave', () => {
+        tiles.forEach(t => { t.style.transform = ''; });
+      });
+    }
+  }
 })();
