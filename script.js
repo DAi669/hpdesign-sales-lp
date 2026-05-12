@@ -128,7 +128,10 @@
       'dental': '歯科', 'pediatric': '小児科',
       'ophthalmology': '眼科', 'internal-medicine': '内科', 'chiropractic': 'カイロ',
       'floristry': '生花店', 'dance': 'ダンス', 'piano': 'ピアノ',
-      'music': '音楽教室', 'art': '絵画教室'
+      'music': '音楽教室', 'art': '絵画教室',
+      // --- 2026-05-12 追加: イベント系5カテゴリ ---
+      'wedding': '結婚式場', 'pop-up': 'ポップアップ', 'fes': 'フェス',
+      'exhibition': '展覧会', 'conference': 'カンファレンス'
     };
 
     // 親→子の許可リスト（CEO 設計通り）。HTMLに無い子もここに書いておくと
@@ -138,7 +141,9 @@
       'beauty': ['salon','nail','esthetic','barber'],
       'wellness': ['yoga','fitness','boxing','seitai','acupuncture'],
       'medical': ['dental','pediatric','ophthalmology','internal-medicine','chiropractic'],
-      'lifestyle': ['floristry','dance','piano','music','art']
+      'lifestyle': ['floristry','dance','piano','music','art'],
+      // --- 2026-05-12 追加: 親カテゴリ「イベント」（5子）---
+      'event': ['wedding','pop-up','fes','exhibition','conference']
     };
 
     // DOM 上に実在するカード数を集計（37件想定／実際は30件＋新規分）
