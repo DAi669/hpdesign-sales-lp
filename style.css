@@ -2304,3 +2304,51 @@ section { padding: var(--gap-xl) 0; }
 .prev-art .sc-display em { color: #C46A4E; font-style: italic; }
 .prev-art .sc-rule { background: #C46A4E; }
 .prev-art .sc-meta { color: rgba(31,42,40,.72); font-family: 'Caveat', cursive; font-size: 0.95rem; letter-spacing: .02em; }
+
+/* ===========================================================================
+   2026-05-12 Showcase 表示制限: デフォルト3件 + 「すべて見る」展開
+   =========================================================================== */
+
+/* デフォルトで data-position 3以降のカードを隠す */
+.showcase-grid.v2 .show-card.v2[data-position="hidden"] {
+  display: none;
+}
+
+/* もっと見るボタンエリア */
+.showcase-more {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0 0;
+}
+.showcase-more[data-state="expanded"] .btn-show-all .label-collapsed { display: none; }
+.showcase-more[data-state="collapsed"] .btn-show-all .label-expanded { display: none; }
+
+.btn-show-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 36px;
+  border-radius: 999px;
+  background: var(--c-ink, #1c2733);
+  color: var(--c-paper, #FFFDF8);
+  font-family: var(--font-jp, "Noto Sans JP", sans-serif);
+  font-weight: 700;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 14px 32px -8px rgba(28,39,51,0.4);
+  transition: transform 0.3s cubic-bezier(.2,.8,.2,1), box-shadow 0.3s, background 0.25s;
+}
+.btn-show-all:hover {
+  background: var(--c-coral, #F4A537);
+  color: var(--c-ink, #1c2733);
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px -8px rgba(244,165,55,0.5);
+}
+.btn-show-all .hidden-count {
+  font-family: var(--font-en, 'Manrope', sans-serif);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  opacity: 0.7;
+}

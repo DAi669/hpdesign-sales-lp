@@ -43,8 +43,24 @@
 
   // Hero stat count-up
   const stats = document.querySelectorAll('.stat-num[data-count-to]');
+  // 日数経過で数字を増やす（CEO指示・2026-05-12）
+  // data-stat-base-date を基準日とし、1日あたり data-stat-per-day 件増加
+  // 例: 2026-05-12 基準・+0.7/日 → 100日後で +70
+  function computeDynamicTarget(el) {
+    const baseDate = el.dataset.statBaseDate;
+    const baseNum = parseFloat(el.dataset.statBase || el.dataset.countTo || '0');
+    const perDay = parseFloat(el.dataset.statPerDay || '0');
+    if (!baseDate || isNaN(perDay) || perDay === 0) return parseInt(el.dataset.countTo, 10);
+    const base = new Date(baseDate + 'T00:00:00');
+    const now = new Date();
+    const days = Math.max(0, Math.floor((now - base) / (1000 * 60 * 60 * 24)));
+    return Math.floor(baseNum + perDay * days);
+  }
   function countUp(el) {
-    const target = parseInt(el.dataset.countTo, 10);
+    // data-stat-base-date があれば日数経過で目標値を再計算
+    const target = el.dataset.statBaseDate
+      ? computeDynamicTarget(el)
+      : parseInt(el.dataset.countTo, 10);
     if (reduced) { el.textContent = target.toLocaleString(); return; }
     const dur = 1300; const start = performance.now();
     const initial = parseInt(el.textContent.replace(/,/g, ''), 10) || 0;
@@ -175,7 +191,17 @@
     }
 
     // カード表示更新
+    // 「すべて」かつ未展開のときだけ最初の3件のみ表示。それ以外は通常通り。
+    const moreWrap = document.getElementById('showcaseMore');
+    const moreBtn = document.getElementById('btnShowAllTemplates');
+    const hiddenCountEl = document.getElementById('hiddenCount');
+    const COLLAPSED_VISIBLE = 3;
+    function isExpanded() {
+      return moreWrap && moreWrap.dataset.state === 'expanded';
+    }
     function applyFilter({ parent = 'all', child = null } = {}) {
+      const collapsedDefault = (parent === 'all' && !child) && !isExpanded();
+      let visibleCount = 0;
       showCards.forEach(card => {
         let visible = false;
         if (parent === 'all') {
@@ -185,7 +211,47 @@
         } else {
           visible = card.dataset.category === child;
         }
-        card.dataset.hidden = visible ? 'false' : 'true';
+        // 「すべて」初期表示は先頭3件のみに制限
+        if (visible && collapsedDefault) {
+          if (visibleCount >= COLLAPSED_VISIBLE) {
+            card.dataset.position = 'hidden';
+            card.dataset.hidden = 'true';
+          } else {
+            card.dataset.position = '';
+            card.dataset.hidden = 'false';
+            visibleCount++;
+          }
+        } else {
+          card.dataset.position = '';
+          card.dataset.hidden = visible ? 'false' : 'true';
+        }
+      });
+      // もっと見るボタンの表示制御
+      if (moreWrap && moreBtn) {
+        const showButton = (parent === 'all' && !child);
+        moreWrap.style.display = showButton ? 'flex' : 'none';
+        if (showButton) {
+          const total = showCards.length;
+          const remain = total - COLLAPSED_VISIBLE;
+          if (hiddenCountEl) hiddenCountEl.textContent = isExpanded() ? '閉じる' : `+${remain}件`;
+          moreBtn.firstChild && (moreBtn.childNodes[0].nodeValue = isExpanded()
+            ? '参考イメージを折りたたむ '
+            : 'すべての参考イメージを見る ');
+          moreBtn.setAttribute('aria-expanded', isExpanded() ? 'true' : 'false');
+        }
+      }
+    }
+
+    // もっと見るボタンのトグル
+    if (moreBtn && moreWrap) {
+      moreBtn.addEventListener('click', () => {
+        const willExpand = moreWrap.dataset.state !== 'expanded';
+        moreWrap.dataset.state = willExpand ? 'expanded' : 'collapsed';
+        applyFilter({ parent: 'all' });
+        if (!willExpand) {
+          // 折りたたみ時、showcase 冒頭にスクロール戻す
+          document.getElementById('showcase')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
       });
     }
 
@@ -220,7 +286,8 @@
       applyFilter({ parent: parentKey, child: childKey });
     }
 
-    // 初期: 「すべて」が active、子は閉じている（HTML 初期値どおり）
+    // 初期: 「すべて」が active、子は閉じている、3件のみ表示 + ボタン
+    applyFilter({ parent: 'all' });
   })();
 
   // Showcase v2: cards open live URL via overlay <a>. No modal needed.
