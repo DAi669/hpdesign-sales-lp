@@ -651,6 +651,179 @@ em { font-style: normal; }
 .prev-dental .sc-rule { background: #3DA9D8; }
 .prev-dental .sc-meta { color: rgba(31,42,61,.6); }
 
+/* === 新規15テンプレ（16-30）プレビュー CSS === */
+
+/* №16 Yoga */
+.prev-yoga {
+  background:
+    radial-gradient(circle at 80% 30%, rgba(232,196,176,0.4) 0%, transparent 50%),
+    linear-gradient(135deg, #2F3E2A 0%, #4F5E3B 60%, #BFAA6B 130%);
+}
+.prev-yoga .sc-eyebrow { background: rgba(255,255,255,0.92); color: #2F3E2A; }
+.prev-yoga .sc-display em { color: #D4B574; font-style: italic; }
+.prev-yoga .sc-rule { background: rgba(255,255,255,0.5); }
+
+/* №17 Wine */
+.prev-wine {
+  background:
+    radial-gradient(circle at 30% 30%, rgba(212,175,109,0.25) 0%, transparent 50%),
+    linear-gradient(135deg, #1A0D14 0%, #4A1F2A 100%);
+}
+.prev-wine .sc-eyebrow { background: #B4915A; color: #1A0D14; font-family: 'Noto Serif JP', serif; font-style: italic; }
+.prev-wine .sc-display em { color: #C49568; font-style: italic; }
+.prev-wine .sc-rule { background: #B4915A; }
+.prev-wine .sc-meta { color: rgba(244,234,216,0.75); }
+
+/* №18 Tea */
+.prev-tea {
+  background:
+    radial-gradient(circle at 70% 20%, rgba(245,240,225,0.4) 0%, transparent 50%),
+    linear-gradient(135deg, #F5F0E1 0%, #E0D8C0 100%);
+  border-bottom: 1px solid rgba(28,39,51,0.08);
+}
+.prev-tea .sc-eyebrow { background: #2A4A2A; color: #F5F0E1; }
+.prev-tea .sc-display { color: #1A2818; font-family: 'Noto Serif JP', serif; }
+.prev-tea .sc-display em { color: #2A4A2A; font-style: normal; }
+.prev-tea .sc-rule { background: rgba(42,74,42,0.5); }
+.prev-tea .sc-meta { color: rgba(26,40,24,0.65); }
+
+/* №19 Craft Beer */
+.prev-beer {
+  background:
+    radial-gradient(circle at 30% 80%, rgba(255,180,80,0.4) 0%, transparent 50%),
+    linear-gradient(135deg, #2A1810 0%, #6B3F1F 60%, #C68B3C 130%);
+}
+.prev-beer .sc-eyebrow { background: #FFB84A; color: #2A1810; font-family: 'Manrope', sans-serif; }
+.prev-beer .sc-display em { color: #FFB84A; font-style: normal; font-weight: 800; }
+.prev-beer .sc-rule { background: #FFB84A; }
+
+/* №20 Korean BBQ */
+.prev-korean {
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255,200,80,0.25) 0%, transparent 50%),
+    linear-gradient(135deg, #1F0A0A 0%, #C8281C 100%);
+}
+.prev-korean .sc-eyebrow { background: #FFC850; color: #1F0A0A; }
+.prev-korean .sc-display em { color: #FFC850; font-style: normal; }
+.prev-korean .sc-rule { background: #FFC850; }
+
+/* №21 Soba */
+.prev-soba {
+  background:
+    repeating-linear-gradient(90deg, transparent 0, transparent 40px, rgba(28,39,51,0.04) 40px, rgba(28,39,51,0.04) 41px),
+    linear-gradient(135deg, #F0EAD8 0%, #D8CCB0 100%);
+}
+.prev-soba .sc-eyebrow { background: #2D4A6A; color: #F0EAD8; }
+.prev-soba .sc-display { color: #1A2838; font-family: 'Noto Serif JP', serif; }
+.prev-soba .sc-display em { color: #2D4A6A; font-style: italic; }
+.prev-soba .sc-rule { background: rgba(45,74,106,0.5); }
+.prev-soba .sc-meta { color: rgba(26,40,56,0.65); }
+
+/* №22 Gelato */
+.prev-gelato {
+  background:
+    radial-gradient(circle at 70% 30%, rgba(255,200,210,0.5) 0%, transparent 50%),
+    linear-gradient(135deg, #FFEEEC 0%, #FFD6E0 50%, #C8E8F0 130%);
+}
+.prev-gelato .sc-eyebrow { background: #E85A8C; color: #fff; }
+.prev-gelato .sc-display { color: #4A1F2A; }
+.prev-gelato .sc-display em { color: #E85A8C; font-style: italic; }
+.prev-gelato .sc-rule { background: #E85A8C; }
+.prev-gelato .sc-meta { color: rgba(74,31,42,0.65); }
+
+/* №23 Crêpe */
+.prev-crepe {
+  background:
+    radial-gradient(circle at 30% 70%, rgba(255,180,200,0.45) 0%, transparent 50%),
+    linear-gradient(135deg, #FFE1E8 0%, #FFB8C8 100%);
+}
+.prev-crepe .sc-eyebrow { background: #B83E58; color: #fff; }
+.prev-crepe .sc-display { color: #4A1A2A; font-family: 'Noto Serif JP', serif; }
+.prev-crepe .sc-display em { color: #B83E58; font-style: italic; }
+.prev-crepe .sc-rule { background: rgba(184,62,88,0.5); }
+.prev-crepe .sc-meta { color: rgba(74,26,42,0.65); }
+
+/* №24 Nail */
+.prev-nail {
+  background:
+    radial-gradient(circle at 70% 30%, rgba(212,175,109,0.4) 0%, transparent 50%),
+    linear-gradient(135deg, #2A1820 0%, #4A2840 100%);
+}
+.prev-nail .sc-eyebrow { background: #D4AF6D; color: #2A1820; font-family: 'Cormorant Garamond', serif; font-style: italic; letter-spacing: 0.18em; }
+.prev-nail .sc-display em { color: #D4AF6D; font-style: italic; }
+.prev-nail .sc-rule { background: #D4AF6D; }
+
+/* №25 Acupuncture */
+.prev-acupuncture {
+  background:
+    radial-gradient(circle at 80% 20%, rgba(212,175,109,0.2) 0%, transparent 50%),
+    linear-gradient(135deg, #1F2C42 0%, #3A4E68 100%);
+}
+.prev-acupuncture .sc-eyebrow { background: #B83A3A; color: #F8F1E3; font-family: 'Noto Serif JP', serif; }
+.prev-acupuncture .sc-display { color: #F8F1E3; font-family: 'Noto Serif JP', serif; }
+.prev-acupuncture .sc-display em { color: #D4AF6D; font-style: italic; }
+.prev-acupuncture .sc-rule { background: #D4AF6D; }
+.prev-acupuncture .sc-meta { color: rgba(248,241,227,0.7); }
+
+/* №26 Florist */
+.prev-florist {
+  background:
+    radial-gradient(circle at 30% 70%, rgba(184,156,108,0.3) 0%, transparent 50%),
+    linear-gradient(135deg, #F4ECD8 0%, #E0CDA8 50%, #B8916C 130%);
+}
+.prev-florist .sc-eyebrow { background: #5C4A2A; color: #F4ECD8; font-family: 'Cormorant Garamond', serif; font-style: italic; letter-spacing: 0.2em; }
+.prev-florist .sc-display { color: #3A2E18; font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 500; }
+.prev-florist .sc-display em { color: #8B6840; font-style: italic; }
+.prev-florist .sc-rule { background: rgba(58,46,24,0.4); }
+.prev-florist .sc-meta { color: rgba(58,46,24,0.65); }
+
+/* №27 Dance */
+.prev-dance {
+  background:
+    radial-gradient(circle at 30% 30%, rgba(232,90,200,0.4) 0%, transparent 50%),
+    radial-gradient(circle at 70% 70%, rgba(80,180,255,0.4) 0%, transparent 50%),
+    linear-gradient(135deg, #1A0828 0%, #2A0A4A 100%);
+}
+.prev-dance .sc-eyebrow { background: #C8FF1A; color: #1A0828; border-radius: 0; font-family: 'Manrope', sans-serif; }
+.prev-dance .sc-display em { color: #FF5AA0; font-style: normal; }
+.prev-dance .sc-rule { background: #C8FF1A; }
+
+/* №28 Boxing */
+.prev-boxing {
+  background:
+    repeating-linear-gradient(135deg, transparent 0, transparent 24px, rgba(255,255,255,0.04) 24px, rgba(255,255,255,0.04) 25px),
+    linear-gradient(135deg, #050505 0%, #1A0A0A 100%);
+}
+.prev-boxing .sc-eyebrow { background: #C8281C; color: #fff; border-radius: 0; font-family: 'Manrope', sans-serif; font-weight: 800; }
+.prev-boxing .sc-display em { color: #C8281C; font-style: normal; font-weight: 800; }
+.prev-boxing .sc-rule { background: #C8281C; }
+
+/* №29 Piano */
+.prev-piano {
+  background:
+    radial-gradient(circle at 70% 30%, rgba(212,175,109,0.2) 0%, transparent 50%),
+    linear-gradient(135deg, #0F1428 0%, #1F2C4A 80%, #5C5A8A 130%);
+}
+.prev-piano .sc-eyebrow { background: #D4AF6D; color: #0F1428; font-family: 'Cormorant Garamond', serif; font-style: italic; letter-spacing: 0.22em; }
+.prev-piano .sc-display { color: #F4ECD8; font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 500; }
+.prev-piano .sc-display em { color: #D4AF6D; font-style: italic; }
+.prev-piano .sc-rule { background: #D4AF6D; }
+.prev-piano .sc-meta { color: rgba(244,236,216,0.7); }
+
+/* №30 Pediatric */
+.prev-pediatric {
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255,232,140,0.4) 0%, transparent 50%),
+    radial-gradient(circle at 70% 70%, rgba(140,210,240,0.4) 0%, transparent 50%),
+    linear-gradient(135deg, #FFF8E0 0%, #E0F0FC 100%);
+  border-bottom: 1px solid rgba(28,39,51,0.08);
+}
+.prev-pediatric .sc-eyebrow { background: #5BA0D8; color: #fff; }
+.prev-pediatric .sc-display { color: #1F3A5C; }
+.prev-pediatric .sc-display em { color: #5BA0D8; font-style: normal; font-weight: 800; }
+.prev-pediatric .sc-rule { background: #5BA0D8; }
+.prev-pediatric .sc-meta { color: rgba(31,58,92,0.6); }
+
 /* === info area === */
 .show-card.v2 .sc-info {
   padding: 1.4rem 1.4rem 1.6rem;
