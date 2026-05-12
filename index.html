@@ -197,7 +197,7 @@
   <section class="showcase" id="showcase">
     <div class="container">
       <span class="section-eyebrow">— Works —</span>
-      <h2 class="section-title">30種類の<em>参考イメージ</em>。</h2>
+      <h2 class="section-title"><em>参考イメージ</em>から、お店に近いものを。</h2>
       <p class="section-lead">
         「こんなHPが作れたら嬉しい」を探してください。<br>
         <b>すべて実際に動くサイト</b>として体験できます。気に入った1枚をベースに、<br>
@@ -205,543 +205,539 @@
         <small>※ 業種以外のお店も、参考HPに寄せたカスタム制作で柔軟対応。</small>
       </p>
 
-      <div class="showcase-filter" role="tablist" aria-label="業種フィルタ">
-        <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All <span>30</span></button>
-        <button class="filter-btn" data-filter="cafe" role="tab" aria-selected="false">Cafe <span>3</span></button>
-        <button class="filter-btn" data-filter="bakery" role="tab" aria-selected="false">Bakery <span>3</span></button>
-        <button class="filter-btn" data-filter="izakaya" role="tab" aria-selected="false">Izakaya <span>1</span></button>
-        <button class="filter-btn" data-filter="ramen" role="tab" aria-selected="false">Ramen <span>1</span></button>
-        <button class="filter-btn" data-filter="sushi" role="tab" aria-selected="false">Sushi <span>1</span></button>
-        <button class="filter-btn" data-filter="bistro" role="tab" aria-selected="false">Bistro <span>1</span></button>
-        <button class="filter-btn" data-filter="wine" role="tab" aria-selected="false">Wine <span>1</span></button>
-        <button class="filter-btn" data-filter="tea" role="tab" aria-selected="false">Tea <span>1</span></button>
-        <button class="filter-btn" data-filter="craft-beer" role="tab" aria-selected="false">Beer <span>1</span></button>
-        <button class="filter-btn" data-filter="korean-bbq" role="tab" aria-selected="false">Korean <span>1</span></button>
-        <button class="filter-btn" data-filter="soba" role="tab" aria-selected="false">Soba <span>1</span></button>
-        <button class="filter-btn" data-filter="ice-cream" role="tab" aria-selected="false">Gelato <span>1</span></button>
-        <button class="filter-btn" data-filter="crepe" role="tab" aria-selected="false">Crêpe <span>1</span></button>
-        <button class="filter-btn" data-filter="salon" role="tab" aria-selected="false">Salon <span>2</span></button>
-        <button class="filter-btn" data-filter="nail" role="tab" aria-selected="false">Nail <span>1</span></button>
-        <button class="filter-btn" data-filter="seitai" role="tab" aria-selected="false">Seitai <span>1</span></button>
-        <button class="filter-btn" data-filter="acupuncture" role="tab" aria-selected="false">Acupuncture <span>1</span></button>
-        <button class="filter-btn" data-filter="floristry" role="tab" aria-selected="false">Florist <span>1</span></button>
-        <button class="filter-btn" data-filter="yoga" role="tab" aria-selected="false">Yoga <span>1</span></button>
-        <button class="filter-btn" data-filter="fitness" role="tab" aria-selected="false">Fitness <span>1</span></button>
-        <button class="filter-btn" data-filter="dance" role="tab" aria-selected="false">Dance <span>1</span></button>
-        <button class="filter-btn" data-filter="boxing" role="tab" aria-selected="false">Boxing <span>1</span></button>
-        <button class="filter-btn" data-filter="piano" role="tab" aria-selected="false">Piano <span>1</span></button>
-        <button class="filter-btn" data-filter="dental" role="tab" aria-selected="false">Dental <span>1</span></button>
-        <button class="filter-btn" data-filter="pediatric" role="tab" aria-selected="false">Pediatric <span>1</span></button>
+      <!-- 親子フィルタ：第1行（親カテゴリ） / 第2行（子チップ・親選択時のみ表示） -->
+      <div class="showcase-filter-wrap">
+        <!-- 第1行: 親カテゴリ5個 + すべて。件数バッジは JS で動的注入 -->
+        <div class="showcase-filter parent-filter" role="tablist" aria-label="業種フィルタ（大分類）">
+          <button class="filter-btn parent-btn active" data-parent="all" role="tab" aria-selected="true" aria-controls="childFilter">すべて <span class="count" data-count-for="all"></span></button>
+          <button class="filter-btn parent-btn" data-parent="food" role="tab" aria-selected="false" aria-controls="childFilter">飲食店 <span class="count" data-count-for="food"></span></button>
+          <button class="filter-btn parent-btn" data-parent="beauty" role="tab" aria-selected="false" aria-controls="childFilter">美容・サロン <span class="count" data-count-for="beauty"></span></button>
+          <button class="filter-btn parent-btn" data-parent="wellness" role="tab" aria-selected="false" aria-controls="childFilter">健康・フィットネス <span class="count" data-count-for="wellness"></span></button>
+          <button class="filter-btn parent-btn" data-parent="medical" role="tab" aria-selected="false" aria-controls="childFilter">医療 <span class="count" data-count-for="medical"></span></button>
+          <button class="filter-btn parent-btn" data-parent="lifestyle" role="tab" aria-selected="false" aria-controls="childFilter">趣味・教室 <span class="count" data-count-for="lifestyle"></span></button>
+        </div>
+        <!-- 第2行: 子チップ（親クリックで展開・min-height で予約） -->
+        <div class="showcase-filter child-filter" id="childFilter" role="tablist" aria-label="業種フィルタ（小分類）" data-open="false" aria-hidden="true">
+          <!-- JS が親クリックで子チップを動的注入 -->
+        </div>
       </div>
 
       <div class="showcase-grid v2">
 
-        <article class="show-card v2" data-category="cafe" data-slug="cafe-california-open-air">
+        <article class="show-card v2" data-category="cafe" data-parent="food" data-slug="cafe-california-open-air">
           <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/cafe-california-open-air/" target="_blank" rel="noopener" aria-label="California Open Air を実際のサイトで見る"></a>
           <div class="sc-num">№ 01</div>
-          <div class="sc-preview prev-cafe-cali">
-            <span class="sc-eyebrow">Cafe</span>
-            <span class="sc-display">California<br><em>Open Air</em></span>
-            <span class="sc-rule"></span>
-            <span class="sc-meta">Sun-bleached · Pale Yellow · Open</span>
+          <div class="sc-iframe-wrap">
+            <iframe src="https://dai669.github.io/hpdesign-templates/cafe-california-open-air/" loading="lazy" title="California Open Air プレビュー" tabindex="-1" aria-hidden="true"></iframe>
           </div>
           <div class="sc-info">
-            <div class="sc-tags"><span>Cafe</span><span>Pale Yellow</span><span>Open Air</span></div>
+            <div class="sc-tags"><span>カフェ</span><span>ペールイエロー</span><span>開放感</span></div>
             <h3>California Open Air <span class="sc-ja">カリフォルニア・オープンエア</span></h3>
             <p>日差しに焼けたペールイエローと、西海岸のテラスを思わせる開放感。窓辺で本を読みたくなるカフェ向け。</p>
             <span class="sc-cta">実際のサイトを見る →</span>
           </div>
         </article>
 
-        <article class="show-card v2" data-category="cafe" data-slug="cafe-editorial-magazine">
+        <article class="show-card v2" data-category="cafe" data-parent="food" data-slug="cafe-editorial-magazine">
           <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/cafe-editorial-magazine/" target="_blank" rel="noopener" aria-label="Editorial Magazine を実際のサイトで見る"></a>
           <div class="sc-num">№ 02</div>
-          <div class="sc-preview prev-cafe-edit">
-            <span class="sc-eyebrow">Cafe / Vol.02</span>
-            <span class="sc-display">Editorial<br><em>Magazine</em></span>
-            <span class="sc-rule"></span>
-            <span class="sc-meta">Print-style · Editorial · Story</span>
+          <div class="sc-iframe-wrap">
+            <iframe src="https://dai669.github.io/hpdesign-templates/cafe-editorial-magazine/" loading="lazy" title="Editorial Magazine プレビュー" tabindex="-1" aria-hidden="true"></iframe>
           </div>
           <div class="sc-info">
-            <div class="sc-tags"><span>Cafe</span><span>Magazine Grid</span><span>Storytelling</span></div>
+            <div class="sc-tags"><span>カフェ</span><span>マガジン</span><span>ストーリー</span></div>
             <h3>Editorial Magazine <span class="sc-ja">エディトリアル・マガジン</span></h3>
             <p>紙の雑誌のような骨格と、コラム的な物語性。コンセプトを語りたい店主のためのエディトリアル設計。</p>
             <span class="sc-cta">実際のサイトを見る →</span>
           </div>
         </article>
 
-        <article class="show-card v2" data-category="cafe" data-slug="cafe-forest-hideaway">
+        <article class="show-card v2" data-category="cafe" data-parent="food" data-slug="cafe-forest-hideaway">
           <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/cafe-forest-hideaway/" target="_blank" rel="noopener" aria-label="Forest Hideaway を実際のサイトで見る"></a>
           <div class="sc-num">№ 03</div>
-          <div class="sc-preview prev-cafe-forest">
-            <span class="sc-eyebrow">Cafe</span>
-            <span class="sc-display">Forest<br><em>Hideaway</em></span>
-            <span class="sc-rule"></span>
-            <span class="sc-meta">Mossy quiet · Earth tone · Solo</span>
+          <div class="sc-iframe-wrap">
+            <iframe src="https://dai669.github.io/hpdesign-templates/cafe-forest-hideaway/" loading="lazy" title="Forest Hideaway プレビュー" tabindex="-1" aria-hidden="true"></iframe>
           </div>
           <div class="sc-info">
-            <div class="sc-tags"><span>Cafe</span><span>Moss Green</span><span>Quiet</span></div>
+            <div class="sc-tags"><span>カフェ</span><span>モスグリーン</span><span>静謐</span></div>
             <h3>Forest Hideaway <span class="sc-ja">フォレスト・ハイダウェイ</span></h3>
             <p>苔色とアースカラーの静けさ。隠れ家・自家焙煎・ひとり時間。雨の日も似合うトーン。</p>
             <span class="sc-cta">実際のサイトを見る →</span>
           </div>
         </article>
 
-        <article class="show-card v2" data-category="bakery" data-slug="bakery-artisan-rustic">
+        <article class="show-card v2" data-category="bakery" data-parent="food" data-slug="bakery-artisan-rustic">
           <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/bakery-artisan-rustic/" target="_blank" rel="noopener" aria-label="Artisan Rustic を実際のサイトで見る"></a>
           <div class="sc-num">№ 04</div>
-          <div class="sc-preview prev-bakery-rustic">
-            <span class="sc-eyebrow">Bakery</span>
-            <span class="sc-display">Artisan<br><em>Rustic</em></span>
-            <span class="sc-rule"></span>
-            <span class="sc-meta">Hand-warm · Kraft · Stone-oven</span>
+          <div class="sc-iframe-wrap">
+            <iframe src="https://dai669.github.io/hpdesign-templates/bakery-artisan-rustic/" loading="lazy" title="Artisan Rustic プレビュー" tabindex="-1" aria-hidden="true"></iframe>
           </div>
           <div class="sc-info">
-            <div class="sc-tags"><span>Bakery</span><span>Kraft Brown</span><span>Artisan</span></div>
+            <div class="sc-tags"><span>ベーカリー</span><span>クラフトブラウン</span><span>職人</span></div>
             <h3>Artisan Rustic <span class="sc-ja">アルチザン・ラスティック</span></h3>
             <p>石窯と粉と手仕事のあたたかさを伝える、職人系パン屋のためのラスティックなデザイン。</p>
             <span class="sc-cta">実際のサイトを見る →</span>
           </div>
         </article>
 
-        <article class="show-card v2" data-category="bakery" data-slug="bakery-modern-minimalist">
+        <article class="show-card v2" data-category="bakery" data-parent="food" data-slug="bakery-modern-minimalist">
           <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/bakery-modern-minimalist/" target="_blank" rel="noopener" aria-label="Modern Minimalist を実際のサイトで見る"></a>
           <div class="sc-num">№ 05</div>
-          <div class="sc-preview prev-bakery-min">
-            <span class="sc-eyebrow">Bakery</span>
-            <span class="sc-display">Modern<br><em>Minimalist</em></span>
-            <span class="sc-rule"></span>
-            <span class="sc-meta">White space · Sans-serif · Pure</span>
+          <div class="sc-iframe-wrap">
+            <iframe src="https://dai669.github.io/hpdesign-templates/bakery-modern-minimalist/" loading="lazy" title="Modern Minimalist プレビュー" tabindex="-1" aria-hidden="true"></iframe>
           </div>
           <div class="sc-info">
-            <div class="sc-tags"><span>Bakery</span><span>White</span><span>Minimal</span></div>
+            <div class="sc-tags"><span>ベーカリー</span><span>ホワイト</span><span>ミニマル</span></div>
             <h3>Modern Minimalist <span class="sc-ja">モダン・ミニマリスト</span></h3>
             <p>余白と型と整列。装飾を最小限にして、パンそのものを主役にするミニマリスト構成。</p>
             <span class="sc-cta">実際のサイトを見る →</span>
           </div>
         </article>
 
-        <article class="show-card v2" data-category="bakery" data-slug="bakery-storytelling-heritage">
+        <article class="show-card v2" data-category="bakery" data-parent="food" data-slug="bakery-storytelling-heritage">
           <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/bakery-storytelling-heritage/" target="_blank" rel="noopener" aria-label="Storytelling Heritage を実際のサイトで見る"></a>
           <div class="sc-num">№ 06</div>
-          <div class="sc-preview prev-bakery-heri">
-            <span class="sc-eyebrow">Bakery / Heritage</span>
-            <span class="sc-display">Storytelling<br><em>Heritage</em></span>
-            <span class="sc-rule"></span>
-            <span class="sc-meta">Family tale · Bordeaux · Brass</span>
+          <div class="sc-iframe-wrap">
+            <iframe src="https://dai669.github.io/hpdesign-templates/bakery-storytelling-heritage/" loading="lazy" title="Storytelling Heritage プレビュー" tabindex="-1" aria-hidden="true"></iframe>
           </div>
           <div class="sc-info">
-            <div class="sc-tags"><span>Bakery</span><span>Vintage</span><span>Heritage</span></div>
+            <div class="sc-tags"><span>ベーカリー</span><span>ヴィンテージ</span><span>ヘリテージ</span></div>
             <h3>Storytelling Heritage <span class="sc-ja">ストーリーテリング・ヘリテージ</span></h3>
             <p>三代続く家業や、修行先の系譜。歴史と物語を綴る老舗パン屋のためのヘリテージ系デザイン。</p>
             <span class="sc-cta">実際のサイトを見る →</span>
           </div>
         </article>
 
-        <article class="show-card v2" data-category="izakaya" data-slug="izakaya-neon-night">
+        <article class="show-card v2" data-category="izakaya" data-parent="food" data-slug="izakaya-neon-night">
           <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/izakaya-neon-night/" target="_blank" rel="noopener" aria-label="Neon Night を実際のサイトで見る"></a>
           <div class="sc-num">№ 07</div>
-          <div class="sc-preview prev-izakaya">
-            <span class="sc-eyebrow">居酒屋 · IZAKAYA</span>
-            <span class="sc-display jp">ネオン<br><em>夜更け</em></span>
-            <span class="sc-rule"></span>
-            <span class="sc-meta">Showa-retro · 提灯 · 夜</span>
+          <div class="sc-iframe-wrap">
+            <iframe src="https://dai669.github.io/hpdesign-templates/izakaya-neon-night/" loading="lazy" title="Neon Night プレビュー" tabindex="-1" aria-hidden="true"></iframe>
           </div>
           <div class="sc-info">
-            <div class="sc-tags"><span>Izakaya</span><span>Neon Pink</span><span>Showa</span></div>
+            <div class="sc-tags"><span>居酒屋</span><span>ネオンピンク</span><span>昭和レトロ</span></div>
             <h3>Neon Night <span class="sc-ja">ネオン・ナイト</span></h3>
             <p>提灯のあかりとネオン管。手書きポスターと判子。昭和レトロを懐かしむ夜の居酒屋に。</p>
             <span class="sc-cta">実際のサイトを見る →</span>
           </div>
         </article>
 
-        <article class="show-card v2" data-category="salon" data-slug="salon-soft-bloom">
+        <article class="show-card v2" data-category="salon" data-parent="beauty" data-slug="salon-soft-bloom">
           <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/salon-soft-bloom/" target="_blank" rel="noopener" aria-label="Soft Bloom を実際のサイトで見る"></a>
           <div class="sc-num">№ 08</div>
-          <div class="sc-preview prev-salon-bloom">
-            <span class="sc-eyebrow">Salon</span>
-            <span class="sc-display"><em>Soft</em><br>Bloom.</span>
-            <span class="sc-rule"></span>
-            <span class="sc-meta">Pastel · Cream · Italic Serif</span>
+          <div class="sc-iframe-wrap">
+            <iframe src="https://dai669.github.io/hpdesign-templates/salon-soft-bloom/" loading="lazy" title="Soft Bloom プレビュー" tabindex="-1" aria-hidden="true"></iframe>
           </div>
           <div class="sc-info">
-            <div class="sc-tags"><span>Salon</span><span>Cream</span><span>Italic Serif</span></div>
+            <div class="sc-tags"><span>サロン</span><span>クリーム</span><span>イタリック</span></div>
             <h3>Soft Bloom <span class="sc-ja">ソフト・ブルーム</span></h3>
             <p>クリームとブラッシュピンク、シャンパンゴールド。やわらかい花の気配を纏うサロン向けデザイン。</p>
             <span class="sc-cta">実際のサイトを見る →</span>
           </div>
         </article>
 
-        <article class="show-card v2" data-category="salon" data-slug="salon-monochrome-edge">
+        <article class="show-card v2" data-category="salon" data-parent="beauty" data-slug="salon-monochrome-edge">
           <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/salon-monochrome-edge/" target="_blank" rel="noopener" aria-label="Monochrome Edge を実際のサイトで見る"></a>
           <div class="sc-num">№ 09</div>
-          <div class="sc-preview prev-salon-mono">
-            <span class="sc-eyebrow">Salon / №09</span>
-            <span class="sc-display mono">MONOCHROME<br><em>EDGE</em></span>
-            <span class="sc-rule"></span>
-            <span class="sc-meta">Brutalist · Lime accent · Mono</span>
+          <div class="sc-iframe-wrap">
+            <iframe src="https://dai669.github.io/hpdesign-templates/salon-monochrome-edge/" loading="lazy" title="Monochrome Edge プレビュー" tabindex="-1" aria-hidden="true"></iframe>
           </div>
           <div class="sc-info">
-            <div class="sc-tags"><span>Salon</span><span>Mono</span><span>Brutalist</span></div>
+            <div class="sc-tags"><span>サロン</span><span>モノクロ</span><span>ブルータリスト</span></div>
             <h3>Monochrome Edge <span class="sc-ja">モノクローム・エッジ</span></h3>
             <p>純黒と純白、エレクトリックライム。ティッカーとモノスペース。攻めるサロンのためのブルータリズム。</p>
             <span class="sc-cta">実際のサイトを見る →</span>
           </div>
         </article>
 
-        <article class="show-card v2" data-category="seitai" data-slug="seitai-mint-trust">
+        <article class="show-card v2" data-category="seitai" data-parent="wellness" data-slug="seitai-mint-trust">
           <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/seitai-mint-trust/" target="_blank" rel="noopener" aria-label="Mint Trust を実際のサイトで見る"></a>
           <div class="sc-num">№ 10</div>
-          <div class="sc-preview prev-seitai">
-            <span class="sc-eyebrow">Seitai · 整骨院</span>
-            <span class="sc-display"><em>Mint</em><br>Trust.</span>
-            <span class="sc-rule"></span>
-            <span class="sc-meta">Clinical · Navy · Mint</span>
+          <div class="sc-iframe-wrap">
+            <iframe src="https://dai669.github.io/hpdesign-templates/seitai-mint-trust/" loading="lazy" title="Mint Trust プレビュー" tabindex="-1" aria-hidden="true"></iframe>
           </div>
           <div class="sc-info">
-            <div class="sc-tags"><span>Seitai</span><span>Navy</span><span>Trust</span></div>
+            <div class="sc-tags"><span>整骨院</span><span>ネイビー</span><span>信頼</span></div>
             <h3>Mint Trust <span class="sc-ja">ミント・トラスト</span></h3>
             <p>ネイビー・ミント・シャンパンゴールド。医療パンフレットの清潔感と、整骨院ならではの信頼設計。</p>
             <span class="sc-cta">実際のサイトを見る →</span>
           </div>
         </article>
 
-        <article class="show-card v2" data-category="ramen" data-slug="ramen-bold-noodle">
+        <article class="show-card v2" data-category="ramen" data-parent="food" data-slug="ramen-bold-noodle">
           <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/ramen-bold-noodle/" target="_blank" rel="noopener" aria-label="Bold Noodle を実際のサイトで見る"></a>
           <div class="sc-num">№ 11</div>
-          <div class="sc-preview prev-ramen">
-            <span class="sc-eyebrow">Ramen · 麺</span>
-            <span class="sc-display jp"><em>煮干し</em><br>中華そば</span>
-            <span class="sc-rule"></span>
-            <span class="sc-meta">Crimson · Gold · Soot</span>
+          <div class="sc-iframe-wrap">
+            <iframe src="https://dai669.github.io/hpdesign-templates/ramen-bold-noodle/" loading="lazy" title="Bold Noodle プレビュー" tabindex="-1" aria-hidden="true"></iframe>
           </div>
           <div class="sc-info">
-            <div class="sc-tags"><span>Ramen</span><span>Bold Type</span><span>Showa</span></div>
+            <div class="sc-tags"><span>ラーメン</span><span>太字</span><span>昭和</span></div>
             <h3>Bold Noodle <span class="sc-ja">ボールド・ヌードル</span></h3>
             <p>太字毛筆と湯気の演出。一杯への思い入れと、店主の手仕事を全面に。営業時間と限定メニューが目立つラーメン店向け。</p>
             <span class="sc-cta">実際のサイトを見る →</span>
           </div>
         </article>
 
-        <article class="show-card v2" data-category="sushi" data-slug="sushi-edomae-tradition">
+        <article class="show-card v2" data-category="sushi" data-parent="food" data-slug="sushi-edomae-tradition">
           <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/sushi-edomae-tradition/" target="_blank" rel="noopener" aria-label="Edomae Tradition を実際のサイトで見る"></a>
           <div class="sc-num">№ 12</div>
-          <div class="sc-preview prev-sushi">
-            <span class="sc-eyebrow">Sushi · 江戸前</span>
-            <span class="sc-display"><em>Edomae</em><br>Tradition</span>
-            <span class="sc-rule"></span>
-            <span class="sc-meta">Sumi · Ai · Gold</span>
+          <div class="sc-iframe-wrap">
+            <iframe src="https://dai669.github.io/hpdesign-templates/sushi-edomae-tradition/" loading="lazy" title="Edomae Tradition プレビュー" tabindex="-1" aria-hidden="true"></iframe>
           </div>
           <div class="sc-info">
-            <div class="sc-tags"><span>Sushi</span><span>Edomae</span><span>Tradition</span></div>
+            <div class="sc-tags"><span>寿司</span><span>江戸前</span><span>伝統</span></div>
             <h3>Edomae Tradition <span class="sc-ja">江戸前トラディション</span></h3>
             <p>墨と藍、和紙テクスチャ。三代続く老舗の品格を、コース紹介と価格透明性で伝える寿司店向けデザイン。</p>
             <span class="sc-cta">実際のサイトを見る →</span>
           </div>
         </article>
 
-        <article class="show-card v2" data-category="bistro" data-slug="bistro-warm-vintage">
+        <article class="show-card v2" data-category="bistro" data-parent="food" data-slug="bistro-warm-vintage">
           <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/bistro-warm-vintage/" target="_blank" rel="noopener" aria-label="Bistro Warm を実際のサイトで見る"></a>
           <div class="sc-num">№ 13</div>
-          <div class="sc-preview prev-bistro">
-            <span class="sc-eyebrow">Bistro · French</span>
-            <span class="sc-display"><em>Bistro</em><br>Crema.</span>
-            <span class="sc-rule"></span>
-            <span class="sc-meta">Wine · Cream · Brass</span>
+          <div class="sc-iframe-wrap">
+            <iframe src="https://dai669.github.io/hpdesign-templates/bistro-warm-vintage/" loading="lazy" title="Bistro Warm プレビュー" tabindex="-1" aria-hidden="true"></iframe>
           </div>
           <div class="sc-info">
-            <div class="sc-tags"><span>Bistro</span><span>Wine Red</span><span>Vintage</span></div>
+            <div class="sc-tags"><span>ビストロ</span><span>ワインレッド</span><span>ヴィンテージ</span></div>
             <h3>Bistro Warm <span class="sc-ja">ビストロ・ウォーム</span></h3>
             <p>ワインレッドと木目の温かみ。少席のフレンチビストロ、洋食店、ワインバーに。コース内容を読ませる構成。</p>
             <span class="sc-cta">実際のサイトを見る →</span>
           </div>
         </article>
 
-        <article class="show-card v2" data-category="fitness" data-slug="fitness-studio-strong">
+        <article class="show-card v2" data-category="fitness" data-parent="wellness" data-slug="fitness-studio-strong">
           <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/fitness-studio-strong/" target="_blank" rel="noopener" aria-label="Studio Strong を実際のサイトで見る"></a>
           <div class="sc-num">№ 14</div>
-          <div class="sc-preview prev-fitness">
-            <span class="sc-eyebrow">Fitness · Studio</span>
-            <span class="sc-display mono">STUDIO<br><em>BREATH</em></span>
-            <span class="sc-rule"></span>
-            <span class="sc-meta">Black · Lime · Sage</span>
+          <div class="sc-iframe-wrap">
+            <iframe src="https://dai669.github.io/hpdesign-templates/fitness-studio-strong/" loading="lazy" title="Studio Strong プレビュー" tabindex="-1" aria-hidden="true"></iframe>
           </div>
           <div class="sc-info">
-            <div class="sc-tags"><span>Fitness</span><span>Lime accent</span><span>Modern</span></div>
+            <div class="sc-tags"><span>フィットネス</span><span>ライム</span><span>モダン</span></div>
             <h3>Studio Strong <span class="sc-ja">スタジオ・ストロング</span></h3>
             <p>ブラック×ライムのモダンなジム/ヨガ/ピラティススタジオ向け。プログラム/料金/体験予約導線を最短化。</p>
             <span class="sc-cta">実際のサイトを見る →</span>
           </div>
         </article>
 
-        <article class="show-card v2" data-category="dental" data-slug="dental-clean-trust">
+        <article class="show-card v2" data-category="dental" data-parent="medical" data-slug="dental-clean-trust">
           <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/dental-clean-trust/" target="_blank" rel="noopener" aria-label="Clean Trust を実際のサイトで見る"></a>
           <div class="sc-num">№ 15</div>
-          <div class="sc-preview prev-dental">
-            <span class="sc-eyebrow">Dental · Clinic</span>
-            <span class="sc-display"><em>Clean</em><br>Trust.</span>
-            <span class="sc-rule"></span>
-            <span class="sc-meta">Clean Blue · Family · Web Reserve</span>
+          <div class="sc-iframe-wrap">
+            <iframe src="https://dai669.github.io/hpdesign-templates/dental-clean-trust/" loading="lazy" title="Clean Trust プレビュー" tabindex="-1" aria-hidden="true"></iframe>
           </div>
           <div class="sc-info">
-            <div class="sc-tags"><span>Dental</span><span>Clinic Blue</span><span>Family</span></div>
+            <div class="sc-tags"><span>歯科</span><span>クリニックブルー</span><span>ファミリー</span></div>
             <h3>Clean Trust <span class="sc-ja">クリーン・トラスト</span></h3>
             <p>明るい青と緑の清潔感。歯科・小児科・耳鼻科などのクリニック向け。診療時間表とWEB予約導線を最適化。</p>
             <span class="sc-cta">実際のサイトを見る →</span>
           </div>
         </article>
 
-        <article class="show-card v2" data-category="yoga" data-slug="yoga-pilates-zen">
+        <article class="show-card v2" data-category="yoga" data-parent="wellness" data-slug="yoga-pilates-zen">
           <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/yoga-pilates-zen/" target="_blank" rel="noopener" aria-label="Studio Mu を実際のサイトで見る"></a>
           <div class="sc-num">№ 16</div>
-          <div class="sc-preview prev-yoga">
-            <span class="sc-eyebrow">Yoga · 禅</span>
-            <span class="sc-display"><em>息</em>を<br>整える</span>
-            <span class="sc-rule"></span>
-            <span class="sc-meta">Bamboo · Moss · Rust</span>
+          <div class="sc-iframe-wrap">
+            <iframe src="https://dai669.github.io/hpdesign-templates/yoga-pilates-zen/" loading="lazy" title="Studio Mu プレビュー" tabindex="-1" aria-hidden="true"></iframe>
           </div>
           <div class="sc-info">
-            <div class="sc-tags"><span>Yoga</span><span>Zen</span><span>Mincho</span></div>
+            <div class="sc-tags"><span>ヨガ</span><span>禅</span><span>明朝</span></div>
             <h3>Studio Mu <span class="sc-ja">スタジオ・ムー</span></h3>
             <p>大人女性のための禅スタイル。畳と無垢材の小さなスタジオ。ヨガ・ピラティス・瞑想スタジオ向け。</p>
             <span class="sc-cta">実際のサイトを見る →</span>
           </div>
         </article>
 
-        <article class="show-card v2" data-category="wine" data-slug="wine-bar-noir">
+        <article class="show-card v2" data-category="wine" data-parent="food" data-slug="wine-bar-noir">
           <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/wine-bar-noir/" target="_blank" rel="noopener" aria-label="Bar Verre を実際のサイトで見る"></a>
           <div class="sc-num">№ 17</div>
-          <div class="sc-preview prev-wine">
-            <span class="sc-eyebrow">Wine · Noir</span>
-            <span class="sc-display"><em>Bar</em><br>Verre.</span>
-            <span class="sc-rule"></span>
-            <span class="sc-meta">Noir · Copper · Brass</span>
+          <div class="sc-iframe-wrap">
+            <iframe src="https://dai669.github.io/hpdesign-templates/wine-bar-noir/" loading="lazy" title="Bar Verre プレビュー" tabindex="-1" aria-hidden="true"></iframe>
           </div>
           <div class="sc-info">
-            <div class="sc-tags"><span>Wine</span><span>Noir</span><span>Brass</span></div>
+            <div class="sc-tags"><span>ワインバー</span><span>ノワール</span><span>真鍮</span></div>
             <h3>Bar Verre <span class="sc-ja">バール・ヴェール</span></h3>
             <p>ダーク × 銅 × 真鍮。自然派ワインバー・深夜営業ビストロ向け。グラスワインリストを読ませる構成。</p>
             <span class="sc-cta">実際のサイトを見る →</span>
           </div>
         </article>
 
-        <article class="show-card v2" data-category="tea" data-slug="tea-house-japan">
+        <article class="show-card v2" data-category="tea" data-parent="food" data-slug="tea-house-japan">
           <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/tea-house-japan/" target="_blank" rel="noopener" aria-label="茶寮 千歳 を実際のサイトで見る"></a>
           <div class="sc-num">№ 18</div>
-          <div class="sc-preview prev-tea">
-            <span class="sc-eyebrow">Tea · 茶寮</span>
-            <span class="sc-display jp">一服の<br><em>静けさ</em></span>
-            <span class="sc-rule"></span>
-            <span class="sc-meta">Matcha · Lacquer · Washi</span>
+          <div class="sc-iframe-wrap">
+            <iframe src="https://dai669.github.io/hpdesign-templates/tea-house-japan/" loading="lazy" title="茶寮 千歳 プレビュー" tabindex="-1" aria-hidden="true"></iframe>
           </div>
           <div class="sc-info">
-            <div class="sc-tags"><span>Tea</span><span>Matcha</span><span>Lacquer</span></div>
+            <div class="sc-tags"><span>日本茶</span><span>抹茶</span><span>黒漆</span></div>
             <h3>茶寮 千歳 <span class="sc-ja">サリョウ・チトセ</span></h3>
             <p>抹茶 × 白磁 × 黒漆。日本茶カフェ・和カフェ・茶寮向け。畑から湯のみまでの物語を語る構成。</p>
             <span class="sc-cta">実際のサイトを見る →</span>
           </div>
         </article>
 
-        <article class="show-card v2" data-category="craft-beer" data-slug="craft-beer-pub">
+        <article class="show-card v2" data-category="craft-beer" data-parent="food" data-slug="craft-beer-pub">
           <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/craft-beer-pub/" target="_blank" rel="noopener" aria-label="TAP STAND 47 を実際のサイトで見る"></a>
           <div class="sc-num">№ 19</div>
-          <div class="sc-preview prev-beer">
-            <span class="sc-eyebrow">Craft Beer · Pub</span>
-            <span class="sc-display mono">TAP STAND<br><em>47</em></span>
-            <span class="sc-rule"></span>
-            <span class="sc-meta">Hops · Rust · Bungee</span>
+          <div class="sc-iframe-wrap">
+            <iframe src="https://dai669.github.io/hpdesign-templates/craft-beer-pub/" loading="lazy" title="TAP STAND 47 プレビュー" tabindex="-1" aria-hidden="true"></iframe>
           </div>
           <div class="sc-info">
-            <div class="sc-tags"><span>Craft Beer</span><span>Hipster</span><span>Bungee</span></div>
+            <div class="sc-tags"><span>クラフトビール</span><span>ヒップスター</span><span>ホップ</span></div>
             <h3>TAP STAND 47 <span class="sc-ja">タップ・スタンド・47</span></h3>
             <p>ヒップスター × ホップ。クラフトビールパブ・タップルーム向け。タップごとのスペック表示を強化。</p>
             <span class="sc-cta">実際のサイトを見る →</span>
           </div>
         </article>
 
-        <article class="show-card v2" data-category="korean-bbq" data-slug="korean-bbq-grill">
+        <article class="show-card v2" data-category="korean-bbq" data-parent="food" data-slug="korean-bbq-grill">
           <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/korean-bbq-grill/" target="_blank" rel="noopener" aria-label="焼肉おとも を実際のサイトで見る"></a>
           <div class="sc-num">№ 20</div>
-          <div class="sc-preview prev-kbbq">
-            <span class="sc-eyebrow">Korean BBQ · 焼肉</span>
-            <span class="sc-display jp"><em>炭</em>の上で、<br>家族のあじ。</span>
-            <span class="sc-rule"></span>
-            <span class="sc-meta">Crimson · Soot · Piman</span>
+          <div class="sc-iframe-wrap">
+            <iframe src="https://dai669.github.io/hpdesign-templates/korean-bbq-grill/" loading="lazy" title="焼肉 おとも プレビュー" tabindex="-1" aria-hidden="true"></iframe>
           </div>
           <div class="sc-info">
-            <div class="sc-tags"><span>Korean</span><span>BBQ</span><span>Family</span></div>
+            <div class="sc-tags"><span>韓国焼肉</span><span>BBQ</span><span>ファミリー</span></div>
             <h3>焼肉 おとも <span class="sc-ja">ヤキニク・オトモ</span></h3>
             <p>朱赤 × 炭黒 × ピマンイエロー。韓国焼肉・サムギョプサル店向け。コース料金と宴会導線を最適化。</p>
             <span class="sc-cta">実際のサイトを見る →</span>
           </div>
         </article>
 
-        <article class="show-card v2" data-category="soba" data-slug="soba-traditional">
+        <article class="show-card v2" data-category="soba" data-parent="food" data-slug="soba-traditional">
           <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/soba-traditional/" target="_blank" rel="noopener" aria-label="蕎麦処 ふじ田 を実際のサイトで見る"></a>
           <div class="sc-num">№ 21</div>
-          <div class="sc-preview prev-soba">
-            <span class="sc-eyebrow">Soba · 信州</span>
-            <span class="sc-display jp">石臼で<br><em>手</em>打ち。</span>
-            <span class="sc-rule"></span>
-            <span class="sc-meta">Indigo · Hinoki · Sumi</span>
+          <div class="sc-iframe-wrap">
+            <iframe src="https://dai669.github.io/hpdesign-templates/soba-traditional/" loading="lazy" title="蕎麦処 ふじ田 プレビュー" tabindex="-1" aria-hidden="true"></iframe>
           </div>
           <div class="sc-info">
-            <div class="sc-tags"><span>Soba</span><span>Indigo</span><span>Traditional</span></div>
+            <div class="sc-tags"><span>蕎麦</span><span>藍染</span><span>伝統</span></div>
             <h3>蕎麦処 ふじ田 <span class="sc-ja">ソバドコロ・フジタ</span></h3>
             <p>藍染 × 麻 × 木曽桧。手打ち蕎麦・うどん店・和食店向け。畑から湯気までの工程を見せる構成。</p>
             <span class="sc-cta">実際のサイトを見る →</span>
           </div>
         </article>
 
-        <article class="show-card v2" data-category="ice-cream" data-slug="ice-cream-summer">
+        <article class="show-card v2" data-category="ice-cream" data-parent="food" data-slug="ice-cream-summer">
           <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/ice-cream-summer/" target="_blank" rel="noopener" aria-label="Gelateria Sole を実際のサイトで見る"></a>
           <div class="sc-num">№ 22</div>
-          <div class="sc-preview prev-gelato">
-            <span class="sc-eyebrow">Gelato · 葉山</span>
-            <span class="sc-display"><em>Sole</em><br>葉山の夏</span>
-            <span class="sc-rule"></span>
-            <span class="sc-meta">Pastel · Cream · Mint</span>
+          <div class="sc-iframe-wrap">
+            <iframe src="https://dai669.github.io/hpdesign-templates/ice-cream-summer/" loading="lazy" title="Gelateria Sole プレビュー" tabindex="-1" aria-hidden="true"></iframe>
           </div>
           <div class="sc-info">
-            <div class="sc-tags"><span>Gelato</span><span>Pastel</span><span>Summer</span></div>
+            <div class="sc-tags"><span>ジェラート</span><span>パステル</span><span>サマー</span></div>
             <h3>Gelateria Sole <span class="sc-ja">ジェラテリア・ソーレ</span></h3>
             <p>パステル × ヴィヴィッド。ジェラート・アイスクリーム店向け。フレーバー12種類のカラーパレット表示。</p>
             <span class="sc-cta">実際のサイトを見る →</span>
           </div>
         </article>
 
-        <article class="show-card v2" data-category="crepe" data-slug="crepe-streetfood">
+        <article class="show-card v2" data-category="crepe" data-parent="food" data-slug="crepe-streetfood">
           <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/crepe-streetfood/" target="_blank" rel="noopener" aria-label="Crêpe Cher を実際のサイトで見る"></a>
           <div class="sc-num">№ 23</div>
-          <div class="sc-preview prev-crepe">
-            <span class="sc-eyebrow">Crêpe · 原宿</span>
-            <span class="sc-display"><em>Sweet</em>,<br>cute.</span>
-            <span class="sc-rule"></span>
-            <span class="sc-meta">Pop Pink · Candy · Pacifico</span>
+          <div class="sc-iframe-wrap">
+            <iframe src="https://dai669.github.io/hpdesign-templates/crepe-streetfood/" loading="lazy" title="Crêpe Cher プレビュー" tabindex="-1" aria-hidden="true"></iframe>
           </div>
           <div class="sc-info">
-            <div class="sc-tags"><span>Crêpe</span><span>Pop</span><span>Cute</span></div>
+            <div class="sc-tags"><span>クレープ</span><span>ポップ</span><span>キュート</span></div>
             <h3>Crêpe Cher <span class="sc-ja">クレープ・シェール</span></h3>
             <p>ポップ × ピンク。クレープ・タピオカ・スイーツ屋台向け。映えとSNS集客導線を強化。</p>
             <span class="sc-cta">実際のサイトを見る →</span>
           </div>
         </article>
 
-        <article class="show-card v2" data-category="nail" data-slug="nail-salon-glamour">
+        <article class="show-card v2" data-category="nail" data-parent="beauty" data-slug="nail-salon-glamour">
           <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/nail-salon-glamour/" target="_blank" rel="noopener" aria-label="Nail Atelier Lune を実際のサイトで見る"></a>
           <div class="sc-num">№ 24</div>
-          <div class="sc-preview prev-nail">
-            <span class="sc-eyebrow">Nail · Ginza</span>
-            <span class="sc-display"><em>Atelier</em><br>Lune.</span>
-            <span class="sc-rule"></span>
-            <span class="sc-meta">Pearl · Gold · Private</span>
+          <div class="sc-iframe-wrap">
+            <iframe src="https://dai669.github.io/hpdesign-templates/nail-salon-glamour/" loading="lazy" title="Atelier Lune プレビュー" tabindex="-1" aria-hidden="true"></iframe>
           </div>
           <div class="sc-info">
-            <div class="sc-tags"><span>Nail</span><span>Pearl Gold</span><span>Glamour</span></div>
+            <div class="sc-tags"><span>ネイル</span><span>パールゴールド</span><span>グラマー</span></div>
             <h3>Atelier Lune <span class="sc-ja">アトリエ・ルーン</span></h3>
             <p>ゴールド × ピンクパール。プライベートネイルサロン・まつ毛サロン向け。デザインギャラリーを強調。</p>
             <span class="sc-cta">実際のサイトを見る →</span>
           </div>
         </article>
 
-        <article class="show-card v2" data-category="acupuncture" data-slug="acupuncture-wellness">
+        <article class="show-card v2" data-category="acupuncture" data-parent="wellness" data-slug="acupuncture-wellness">
           <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/acupuncture-wellness/" target="_blank" rel="noopener" aria-label="鍼灸 養氣堂 を実際のサイトで見る"></a>
           <div class="sc-num">№ 25</div>
-          <div class="sc-preview prev-acu">
-            <span class="sc-eyebrow">Acupuncture · 鍼灸</span>
-            <span class="sc-display jp"><em>氣</em>を<br>めぐらせる</span>
-            <span class="sc-rule"></span>
-            <span class="sc-meta">Navy · Vermilion · Washi</span>
+          <div class="sc-iframe-wrap">
+            <iframe src="https://dai669.github.io/hpdesign-templates/acupuncture-wellness/" loading="lazy" title="鍼灸 養氣堂 プレビュー" tabindex="-1" aria-hidden="true"></iframe>
           </div>
           <div class="sc-info">
-            <div class="sc-tags"><span>Acupuncture</span><span>Eastern Med</span><span>Wellness</span></div>
+            <div class="sc-tags"><span>鍼灸</span><span>東洋医学</span><span>ウェルネス</span></div>
             <h3>鍼灸 養氣堂 <span class="sc-ja">シンキュウ・ヨウキドウ</span></h3>
             <p>紺 × 朱 × 和紙。鍼灸院・東洋医学クリニック向け。対応症状と国家資格情報を構造化。</p>
             <span class="sc-cta">実際のサイトを見る →</span>
           </div>
         </article>
 
-        <article class="show-card v2" data-category="floristry" data-slug="floristry-blooms">
+        <article class="show-card v2" data-category="floristry" data-parent="lifestyle" data-slug="floristry-blooms">
           <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/floristry-blooms/" target="_blank" rel="noopener" aria-label="Atelier Fleur を実際のサイトで見る"></a>
           <div class="sc-num">№ 26</div>
-          <div class="sc-preview prev-flower">
-            <span class="sc-eyebrow">Florist · 芦屋</span>
-            <span class="sc-display"><em>Atelier</em><br>Fleur.</span>
-            <span class="sc-rule"></span>
-            <span class="sc-meta">Sage · Terracotta · Botanical</span>
+          <div class="sc-iframe-wrap">
+            <iframe src="https://dai669.github.io/hpdesign-templates/floristry-blooms/" loading="lazy" title="Atelier Fleur プレビュー" tabindex="-1" aria-hidden="true"></iframe>
           </div>
           <div class="sc-info">
-            <div class="sc-tags"><span>Florist</span><span>Botanical</span><span>Nuance</span></div>
+            <div class="sc-tags"><span>生花店</span><span>ボタニカル</span><span>ニュアンス</span></div>
             <h3>Atelier Fleur <span class="sc-ja">アトリエ・フルール</span></h3>
             <p>ボタニカル × ニュアンスカラー。生花店・植物店・グリーンインテリア向け。ブーケのバリエーション表示。</p>
             <span class="sc-cta">実際のサイトを見る →</span>
           </div>
         </article>
 
-        <article class="show-card v2" data-category="dance" data-slug="dance-studio-energy">
+        <article class="show-card v2" data-category="dance" data-parent="lifestyle" data-slug="dance-studio-energy">
           <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/dance-studio-energy/" target="_blank" rel="noopener" aria-label="DANCE LAB Tokyo を実際のサイトで見る"></a>
           <div class="sc-num">№ 27</div>
-          <div class="sc-preview prev-dance">
-            <span class="sc-eyebrow">Dance · Tokyo</span>
-            <span class="sc-display mono"><em>DANCE</em><br>YOUR WAY</span>
-            <span class="sc-rule"></span>
-            <span class="sc-meta">Electric · Gradient · Neon</span>
+          <div class="sc-iframe-wrap">
+            <iframe src="https://dai669.github.io/hpdesign-templates/dance-studio-energy/" loading="lazy" title="DANCE LAB Tokyo プレビュー" tabindex="-1" aria-hidden="true"></iframe>
           </div>
           <div class="sc-info">
-            <div class="sc-tags"><span>Dance</span><span>Electric</span><span>K-POP</span></div>
+            <div class="sc-tags"><span>ダンス</span><span>エレクトリック</span><span>K-POP</span></div>
             <h3>DANCE LAB Tokyo <span class="sc-ja">ダンス・ラボ・トウキョウ</span></h3>
             <p>エレクトリック × グラデーション。ダンス・K-POP・チア・キッズダンス向け。タイムテーブル即可視化。</p>
             <span class="sc-cta">実際のサイトを見る →</span>
           </div>
         </article>
 
-        <article class="show-card v2" data-category="boxing" data-slug="boxing-gym-strong">
+        <article class="show-card v2" data-category="boxing" data-parent="wellness" data-slug="boxing-gym-strong">
           <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/boxing-gym-strong/" target="_blank" rel="noopener" aria-label="Iron Fist Boxing を実際のサイトで見る"></a>
           <div class="sc-num">№ 28</div>
-          <div class="sc-preview prev-box">
-            <span class="sc-eyebrow">Boxing · 大阪</span>
-            <span class="sc-display mono">HIT.<br><em>REPEAT.</em></span>
-            <span class="sc-rule"></span>
-            <span class="sc-meta">Mono · Blood Red · Anton</span>
+          <div class="sc-iframe-wrap">
+            <iframe src="https://dai669.github.io/hpdesign-templates/boxing-gym-strong/" loading="lazy" title="Iron Fist Boxing プレビュー" tabindex="-1" aria-hidden="true"></iframe>
           </div>
           <div class="sc-info">
-            <div class="sc-tags"><span>Boxing</span><span>Strong</span><span>Pro</span></div>
+            <div class="sc-tags"><span>ボクシング</span><span>ストロング</span><span>プロ</span></div>
             <h3>Iron Fist Boxing <span class="sc-ja">アイアン・フィスト・ボクシング</span></h3>
             <p>モノクロ × 血赤。ボクシング・キックボクシング・格闘技ジム向け。プロ実績数値の信頼設計。</p>
             <span class="sc-cta">実際のサイトを見る →</span>
           </div>
         </article>
 
-        <article class="show-card v2" data-category="piano" data-slug="piano-cafe-elegant">
+        <article class="show-card v2" data-category="piano" data-parent="lifestyle" data-slug="piano-cafe-elegant">
           <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/piano-cafe-elegant/" target="_blank" rel="noopener" aria-label="Café Mineur を実際のサイトで見る"></a>
           <div class="sc-num">№ 29</div>
-          <div class="sc-preview prev-piano">
-            <span class="sc-eyebrow">Piano · 大濠</span>
-            <span class="sc-display"><em>Café</em><br>Mineur.</span>
-            <span class="sc-rule"></span>
-            <span class="sc-meta">Night · Brass · Burgundy</span>
+          <div class="sc-iframe-wrap">
+            <iframe src="https://dai669.github.io/hpdesign-templates/piano-cafe-elegant/" loading="lazy" title="Café Mineur プレビュー" tabindex="-1" aria-hidden="true"></iframe>
           </div>
           <div class="sc-info">
-            <div class="sc-tags"><span>Piano</span><span>Jazz</span><span>Brass</span></div>
+            <div class="sc-tags"><span>ピアノ</span><span>ジャズ</span><span>真鍮</span></div>
             <h3>Café Mineur <span class="sc-ja">カフェ・ミヌール</span></h3>
             <p>夜紺 × 真鍮 × アイボリー。ピアノカフェ・ジャズバー・サロン文化系向け。週間ライブスケジュール表示。</p>
             <span class="sc-cta">実際のサイトを見る →</span>
           </div>
         </article>
 
-        <article class="show-card v2" data-category="pediatric" data-slug="clinic-pediatric-friendly">
+        <article class="show-card v2" data-category="pediatric" data-parent="medical" data-slug="clinic-pediatric-friendly">
           <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/clinic-pediatric-friendly/" target="_blank" rel="noopener" aria-label="こども医院 ぱぴこ を実際のサイトで見る"></a>
           <div class="sc-num">№ 30</div>
-          <div class="sc-preview prev-pedi">
-            <span class="sc-eyebrow">Pediatric · 大宮</span>
-            <span class="sc-display jp"><em>こども</em>の<br>笑顔を</span>
-            <span class="sc-rule"></span>
-            <span class="sc-meta">Yellow · Sky · Lime</span>
+          <div class="sc-iframe-wrap">
+            <iframe src="https://dai669.github.io/hpdesign-templates/clinic-pediatric-friendly/" loading="lazy" title="こども医院 ぱぴこ プレビュー" tabindex="-1" aria-hidden="true"></iframe>
           </div>
           <div class="sc-info">
-            <div class="sc-tags"><span>Pediatric</span><span>Friendly</span><span>Bright</span></div>
+            <div class="sc-tags"><span>小児科</span><span>ファミリー</span><span>ブライト</span></div>
             <h3>こども医院 ぱぴこ <span class="sc-ja">コドモイイン・パピコ</span></h3>
             <p>ペールイエロー × 水色 × ライム。小児科・耳鼻科・産婦人科などこども・ご家族向けクリニック。</p>
+            <span class="sc-cta">実際のサイトを見る →</span>
+          </div>
+        </article>
+
+        <article class="show-card v2" data-category="esthetic" data-parent="beauty" data-slug="esthetic-spa-luxe">
+          <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/esthetic-spa-luxe/" target="_blank" rel="noopener" aria-label="Atelier Soir を実際のサイトで見る"></a>
+          <div class="sc-num">№ 31</div>
+          <div class="sc-iframe-wrap">
+            <iframe src="https://dai669.github.io/hpdesign-templates/esthetic-spa-luxe/" loading="lazy" title="Atelier Soir プレビュー" tabindex="-1" aria-hidden="true"></iframe>
+          </div>
+          <div class="sc-info">
+            <div class="sc-tags"><span>エステ</span><span>ラグジュアリー</span><span>ゴールド</span></div>
+            <h3>Atelier Soir <span class="sc-ja">アトリエ・ソワール</span></h3>
+            <p>ゴールド × ローズベージュ × 大理石。完全個室のエステサロン向け。上質さで信頼を伝える。</p>
+            <span class="sc-cta">実際のサイトを見る →</span>
+          </div>
+        </article>
+
+        <article class="show-card v2" data-category="barber" data-parent="beauty" data-slug="barber-mens-classic">
+          <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/barber-mens-classic/" target="_blank" rel="noopener" aria-label="BARBER GENT を実際のサイトで見る"></a>
+          <div class="sc-num">№ 32</div>
+          <div class="sc-iframe-wrap">
+            <iframe src="https://dai669.github.io/hpdesign-templates/barber-mens-classic/" loading="lazy" title="BARBER GENT プレビュー" tabindex="-1" aria-hidden="true"></iframe>
+          </div>
+          <div class="sc-info">
+            <div class="sc-tags"><span>バーバー</span><span>メンズ</span><span>クラシック</span></div>
+            <h3>BARBER GENT <span class="sc-ja">バーバー・ジェント</span></h3>
+            <p>黒 × 真鍮 × ストライプ。男性向けバーバーショップ・理容店向け。クラシックで媚びない設計。</p>
+            <span class="sc-cta">実際のサイトを見る →</span>
+          </div>
+        </article>
+
+        <article class="show-card v2" data-category="ophthalmology" data-parent="medical" data-slug="clinic-ophthalmology">
+          <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/clinic-ophthalmology/" target="_blank" rel="noopener" aria-label="山辺眼科クリニック を実際のサイトで見る"></a>
+          <div class="sc-num">№ 33</div>
+          <div class="sc-iframe-wrap">
+            <iframe src="https://dai669.github.io/hpdesign-templates/clinic-ophthalmology/" loading="lazy" title="山辺眼科クリニック プレビュー" tabindex="-1" aria-hidden="true"></iframe>
+          </div>
+          <div class="sc-info">
+            <div class="sc-tags"><span>眼科</span><span>クリニック</span><span>清潔</span></div>
+            <h3>山辺眼科クリニック <span class="sc-ja">ヤマベ・ガンカクリニック</span></h3>
+            <p>白 × 淡い青 × 柔らかい緑。眼科・コンタクトレンズ専門医・視能訓練向け。安心感のあるトーン。</p>
+            <span class="sc-cta">実際のサイトを見る →</span>
+          </div>
+        </article>
+
+        <article class="show-card v2" data-category="internal-medicine" data-parent="medical" data-slug="clinic-internal-medicine">
+          <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/clinic-internal-medicine/" target="_blank" rel="noopener" aria-label="みなと内科クリニック を実際のサイトで見る"></a>
+          <div class="sc-num">№ 34</div>
+          <div class="sc-iframe-wrap">
+            <iframe src="https://dai669.github.io/hpdesign-templates/clinic-internal-medicine/" loading="lazy" title="みなと内科クリニック プレビュー" tabindex="-1" aria-hidden="true"></iframe>
+          </div>
+          <div class="sc-info">
+            <div class="sc-tags"><span>内科</span><span>クリニック</span><span>信頼</span></div>
+            <h3>みなと内科クリニック <span class="sc-ja">ミナト・ナイカクリニック</span></h3>
+            <p>クリーンホワイト × 青系 × 信頼感。一般内科・予防医療・健診クリニック向け。</p>
+            <span class="sc-cta">実際のサイトを見る →</span>
+          </div>
+        </article>
+
+        <article class="show-card v2" data-category="chiropractic" data-parent="medical" data-slug="clinic-chiropractic-back">
+          <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/clinic-chiropractic-back/" target="_blank" rel="noopener" aria-label="背骨カイロ ストレート を実際のサイトで見る"></a>
+          <div class="sc-num">№ 35</div>
+          <div class="sc-iframe-wrap">
+            <iframe src="https://dai669.github.io/hpdesign-templates/clinic-chiropractic-back/" loading="lazy" title="背骨カイロ ストレート プレビュー" tabindex="-1" aria-hidden="true"></iframe>
+          </div>
+          <div class="sc-info">
+            <div class="sc-tags"><span>カイロ</span><span>整体</span><span>専門</span></div>
+            <h3>背骨カイロ ストレート <span class="sc-ja">セボネ・カイロ・ストレート</span></h3>
+            <p>グレーブルー × オーク × 専門感。カイロプラクティック・整体院・姿勢矯正専門向け。</p>
+            <span class="sc-cta">実際のサイトを見る →</span>
+          </div>
+        </article>
+
+        <article class="show-card v2" data-category="music" data-parent="lifestyle" data-slug="music-school-classical">
+          <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/music-school-classical/" target="_blank" rel="noopener" aria-label="Studio Crescendo を実際のサイトで見る"></a>
+          <div class="sc-num">№ 36</div>
+          <div class="sc-iframe-wrap">
+            <iframe src="https://dai669.github.io/hpdesign-templates/music-school-classical/" loading="lazy" title="Studio Crescendo プレビュー" tabindex="-1" aria-hidden="true"></iframe>
+          </div>
+          <div class="sc-info">
+            <div class="sc-tags"><span>音楽教室</span><span>クラシカル</span><span>譜面</span></div>
+            <h3>Studio Crescendo <span class="sc-ja">スタジオ・クレッシェンド</span></h3>
+            <p>紺 × 譜面ベージュ × ゴールド。ピアノ・バイオリン・声楽など音楽教室向け。クラシカルな品格。</p>
+            <span class="sc-cta">実際のサイトを見る →</span>
+          </div>
+        </article>
+
+        <article class="show-card v2" data-category="art" data-parent="lifestyle" data-slug="art-class-handcraft">
+          <a class="show-link-overlay" href="https://dai669.github.io/hpdesign-templates/art-class-handcraft/" target="_blank" rel="noopener" aria-label="アトリエ あお葉 を実際のサイトで見る"></a>
+          <div class="sc-num">№ 37</div>
+          <div class="sc-iframe-wrap">
+            <iframe src="https://dai669.github.io/hpdesign-templates/art-class-handcraft/" loading="lazy" title="アトリエ あお葉 プレビュー" tabindex="-1" aria-hidden="true"></iframe>
+          </div>
+          <div class="sc-info">
+            <div class="sc-tags"><span>絵画教室</span><span>陶芸</span><span>クラフト</span></div>
+            <h3>アトリエ あお葉 <span class="sc-ja">アトリエ・アオバ</span></h3>
+            <p>紙クラフト × アクアブルー × アースカラー。絵画教室・陶芸教室・ハンドクラフト工房向け。</p>
             <span class="sc-cta">実際のサイトを見る →</span>
           </div>
         </article>
@@ -1196,6 +1192,13 @@
             <option value="boxing-gym-strong">№28 Boxing / Iron Fist Boxing</option>
             <option value="piano-cafe-elegant">№29 Piano Cafe / Café Mineur</option>
             <option value="clinic-pediatric-friendly">№30 Pediatric / こども医院 ぱぴこ</option>
+            <option value="esthetic-spa-luxe">№31 Esthetic / Atelier Soir</option>
+            <option value="barber-mens-classic">№32 Barber / BARBER GENT</option>
+            <option value="clinic-ophthalmology">№33 Ophthalmology / 山辺眼科クリニック</option>
+            <option value="clinic-internal-medicine">№34 Internal Medicine / みなと内科クリニック</option>
+            <option value="clinic-chiropractic-back">№35 Chiropractic / 背骨カイロ ストレート</option>
+            <option value="music-school-classical">№36 Music School / Studio Crescendo</option>
+            <option value="art-class-handcraft">№37 Art Class / アトリエ あお葉</option>
             <option value="other">— その他（参考HPあり / カスタム制作）</option>
           </select>
         </label>

@@ -889,6 +889,127 @@ em { font-style: normal; }
   opacity: 0.55;
 }
 
+/* === iframe プレビュー (2026-05-12 大規模改修：実HPプレビュー化) === */
+.sc-iframe-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--c-cream, #FFFCF7);
+  border-bottom: 1px solid rgba(28,39,51,0.06);
+  isolation: isolate;
+}
+.sc-iframe-wrap iframe {
+  /* 1200×750 相当の実サイトを 0.5 倍縮小して表示。pointer-events: none でクリック貫通 */
+  position: absolute;
+  top: 0; left: 0;
+  width: 200%;  /* 縮小して2倍幅を確保 → カード幅 = 元サイト幅 */
+  height: 200%;
+  border: 0;
+  transform: scale(0.5);
+  transform-origin: top left;
+  pointer-events: none;  /* show-link-overlay にクリックを通す */
+  background: var(--c-cream, #FFFCF7);
+}
+/* iframe 読み込み中のフォールバック背景（loading="lazy" 時） */
+.sc-iframe-wrap::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(28,39,51,0.04) 0%, rgba(28,39,51,0.08) 100%);
+  z-index: 0;
+}
+.sc-iframe-wrap iframe { z-index: 1; }
+
+/* ホバーで微かな浮き */
+.show-card.v2:hover .sc-iframe-wrap iframe {
+  transition: transform 0.5s var(--ease, cubic-bezier(.2,.8,.2,1));
+}
+
+/* === 親子フィルタ UI（2026-05-12 大規模改修） === */
+.showcase-filter-wrap {
+  margin-bottom: 2.5rem;
+}
+.parent-filter {
+  margin-bottom: 12px;
+}
+.parent-filter .filter-btn {
+  font-size: 0.86rem;
+  padding: 0.6rem 1.2rem;
+  font-weight: 700;
+}
+.parent-filter .filter-btn span.count {
+  margin-left: 8px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: rgba(28,39,51,0.08);
+  color: var(--c-ink-soft, #3a4654);
+  font-family: 'Manrope', monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  opacity: 1;
+}
+.parent-filter .filter-btn.active span.count {
+  background: rgba(255,255,255,0.18);
+  color: var(--c-paper, #fff);
+}
+
+/* 子チップエリア：min-height で常に高さを予約してレイアウトガタつき防止（psychologist 指摘） */
+.child-filter {
+  min-height: 56px;
+  padding: 10px 14px;
+  background: rgba(28,39,51,0.03);
+  border-radius: 16px;
+  box-shadow: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.22s ease, background 0.3s ease;
+  pointer-events: none;
+}
+.child-filter[data-open="true"] {
+  opacity: 1;
+  pointer-events: auto;
+  background: rgba(244,165,55,0.06);
+}
+.child-filter .filter-btn {
+  font-size: 0.74rem;
+  padding: 0.38rem 0.85rem;
+  background: var(--c-paper, #fff);
+  border: 1px solid rgba(28,39,51,0.1);
+  color: var(--c-ink-soft, #3a4654);
+}
+.child-filter .filter-btn.active {
+  background: var(--c-coral, #C8442B);
+  color: #fff;
+  border-color: var(--c-coral, #C8442B);
+}
+.child-filter .filter-btn span.count {
+  margin-left: 6px;
+  font-family: 'Manrope', monospace;
+  font-size: 0.62rem;
+  opacity: 0.6;
+}
+.child-filter .filter-btn.active span.count {
+  opacity: 0.9;
+}
+.child-filter[data-open="false"] {
+  /* 閉じている時も min-height は維持し、フェードアウト */
+}
+/* チップが多い時のモバイル横スクロール対応 */
+@media (max-width: 720px) {
+  .child-filter {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+  .parent-filter .filter-btn { font-size: 0.74rem; padding: 0.45rem 0.85rem; }
+  .parent-filter .filter-btn span.count { font-size: 0.62rem; padding: 1px 5px; }
+  .child-filter .filter-btn { font-size: 0.68rem; padding: 0.32rem 0.7rem; flex-shrink: 0; }
+}
+
 /* ===========================
    Buttons
    =========================== */
@@ -2092,3 +2213,94 @@ section { padding: var(--gap-xl) 0; }
   background: #2a3848;
   box-shadow: 0 20px 40px -8px rgba(28,39,51,0.6);
 }
+
+/* === 追加7テンプレ（№31-37）プレビュー CSS（iframe 読込前のフォールバック背景） === */
+
+/* №31 Esthetic - Atelier Soir */
+.prev-esthe {
+  background:
+    radial-gradient(circle at 75% 25%, rgba(200,168,98,0.30) 0%, transparent 55%),
+    linear-gradient(135deg, #FAF5EE 0%, #EEE7DC 60%, #E8D5C4 100%);
+}
+.prev-esthe .sc-eyebrow { background: #1F1612; color: #FAF5EE; font-family: 'Italiana', serif; letter-spacing: .26em; }
+.prev-esthe .sc-display { color: #1F1612; font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 500; }
+.prev-esthe .sc-display em { color: #8E7440; font-style: italic; }
+.prev-esthe .sc-rule { background: #C8A862; }
+.prev-esthe .sc-meta { color: rgba(31,22,18,.7); font-family: 'Italiana', serif; letter-spacing: .18em; }
+
+/* №32 Barber - BARBER GENT */
+.prev-barber {
+  background:
+    repeating-linear-gradient(45deg, transparent 0, transparent 18px, rgba(184,146,74,0.10) 18px, rgba(184,146,74,0.10) 36px),
+    linear-gradient(135deg, #0F0E0C 0%, #1A1916 100%);
+}
+.prev-barber .sc-eyebrow { background: #B8924A; color: #0F0E0C; font-family: 'Bebas Neue', sans-serif; letter-spacing: .22em; }
+.prev-barber .sc-display { color: #F4EFE3; font-family: 'Bebas Neue', sans-serif; letter-spacing: .02em; }
+.prev-barber .sc-display em { color: #B8924A; font-style: normal; }
+.prev-barber .sc-rule { background: #B8924A; }
+.prev-barber .sc-meta { color: rgba(244,239,227,.65); font-family: 'Special Elite', monospace; letter-spacing: .14em; }
+
+/* №33 Eye Clinic - 山辺眼科 */
+.prev-eye {
+  background:
+    radial-gradient(circle at 75% 75%, rgba(143,191,160,0.20) 0%, transparent 50%),
+    radial-gradient(circle at 25% 25%, rgba(91,155,213,0.18) 0%, transparent 50%),
+    linear-gradient(135deg, #FAFCFE 0%, #EAF2FA 100%);
+  border: 1px solid rgba(27,40,64,0.08);
+}
+.prev-eye .sc-eyebrow { background: #2C6AA0; color: #fff; font-family: 'Manrope', sans-serif; font-weight: 700; }
+.prev-eye .sc-display { color: #1B2840; font-family: 'Manrope', 'Noto Sans JP', sans-serif; font-weight: 700; }
+.prev-eye .sc-display em { color: #5B9BD5; font-style: normal; }
+.prev-eye .sc-rule { background: #5B9BD5; }
+.prev-eye .sc-meta { color: rgba(27,40,64,.62); }
+
+/* №34 Internal Medicine - みなと内科 */
+.prev-internal {
+  background:
+    linear-gradient(180deg, #F2F6FB 0%, #FFFFFF 100%);
+  border: 1px solid rgba(26,44,66,0.08);
+}
+.prev-internal .sc-eyebrow { background: #1E5288; color: #fff; font-family: 'Inter', sans-serif; font-weight: 700; }
+.prev-internal .sc-display { color: #1A2C42; font-family: 'Inter', 'Noto Sans JP', sans-serif; font-weight: 700; }
+.prev-internal .sc-display em { color: #3B7AB8; font-style: normal; }
+.prev-internal .sc-rule { background: #5BA67B; }
+.prev-internal .sc-meta { color: rgba(26,44,66,.6); font-family: 'Inter', sans-serif; }
+
+/* №35 Chiropractic - 背骨カイロ ストレート */
+.prev-chiro {
+  background:
+    radial-gradient(ellipse 600px 400px at 20% 30%, rgba(60,84,104,0.18) 0%, transparent 60%),
+    linear-gradient(135deg, #F4F1EB 0%, #E6E2D8 100%);
+}
+.prev-chiro .sc-eyebrow { background: #1E3245; color: #F4F1EB; font-family: 'Outfit', sans-serif; font-weight: 600; letter-spacing: .22em; }
+.prev-chiro .sc-display { color: #1E2A38; font-family: 'Outfit', 'Noto Sans JP', sans-serif; font-weight: 800; }
+.prev-chiro .sc-display em { color: #7A5A2E; font-style: normal; }
+.prev-chiro .sc-rule { background: #A6804C; }
+.prev-chiro .sc-meta { color: rgba(30,42,56,.68); font-family: 'Outfit', sans-serif; }
+
+/* №36 Music School - Studio Crescendo */
+.prev-music {
+  background:
+    radial-gradient(circle at 30% 30%, rgba(184,150,86,0.20) 0%, transparent 55%),
+    repeating-linear-gradient(0deg, transparent 0, transparent 24px, rgba(184,150,86,0.06) 24px, rgba(184,150,86,0.06) 25px),
+    linear-gradient(135deg, #1F2649 0%, #0E1228 100%);
+}
+.prev-music .sc-eyebrow { background: #B89656; color: #15182A; font-family: 'Lora', serif; font-style: italic; letter-spacing: .14em; }
+.prev-music .sc-display { color: #F8F4EA; font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 500; }
+.prev-music .sc-display em { color: #B89656; font-style: italic; }
+.prev-music .sc-rule { background: #B89656; }
+.prev-music .sc-meta { color: rgba(248,244,234,.7); font-family: 'Lora', serif; font-style: italic; }
+
+/* №37 Art Class - アトリエ あお葉 */
+.prev-art {
+  background:
+    radial-gradient(circle at 75% 20%, rgba(126,175,180,0.32) 0%, transparent 55%),
+    radial-gradient(circle at 15% 75%, rgba(196,106,78,0.28) 0%, transparent 55%),
+    radial-gradient(circle at 60% 80%, rgba(138,166,108,0.22) 0%, transparent 55%),
+    linear-gradient(135deg, #F6F1E8 0%, #E8DDC7 100%);
+}
+.prev-art .sc-eyebrow { background: #C46A4E; color: #F6F1E8; font-family: 'Quicksand', sans-serif; font-weight: 700; }
+.prev-art .sc-display { color: #1F2A28; font-family: 'DM Serif Display', serif; }
+.prev-art .sc-display em { color: #C46A4E; font-style: italic; }
+.prev-art .sc-rule { background: #C46A4E; }
+.prev-art .sc-meta { color: rgba(31,42,40,.72); font-family: 'Caveat', cursive; font-size: 0.95rem; letter-spacing: .02em; }

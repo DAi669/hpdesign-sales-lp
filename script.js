@@ -85,27 +85,145 @@
     targets.forEach(el => io.observe(el));
   }
 
-  // Showcase filter
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const showCards = document.querySelectorAll('.show-card');
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const filter = btn.dataset.filter;
-      filterBtns.forEach(b => {
-        const active = b === btn;
+  // === Showcase 親子フィルタ（2026-05-12 大規模改修） ===
+  // 仕様:
+  //  - 親カテゴリ5個 (food/beauty/wellness/medical/lifestyle) + すべて(all)
+  //  - 親クリック → 子チップ(第2行)を展開してフィルタ
+  //  - 子クリック → 該当 data-category のみ表示
+  //  - 「すべて」クリック → 子チップ閉じる + 全カード表示
+  //  - 件数バッジは DOM から動的算出（37件想定でも自動追従）
+  (() => {
+    const parentBtns = document.querySelectorAll('.parent-btn');
+    const childWrap = document.getElementById('childFilter');
+    const showCards = document.querySelectorAll('.show-card');
+    if (!parentBtns.length || !childWrap || !showCards.length) return;
+
+    // カテゴリスラッグ → 日本語ラベル変換マップ
+    const childLabels = {
+      'cafe': 'カフェ', 'bakery': 'ベーカリー', 'izakaya': '居酒屋',
+      'ramen': 'ラーメン', 'sushi': '寿司', 'bistro': 'ビストロ',
+      'wine': 'ワインバー', 'tea': '日本茶', 'craft-beer': 'クラフトビール',
+      'korean-bbq': '焼肉', 'soba': '蕎麦', 'ice-cream': 'ジェラート',
+      'crepe': 'クレープ',
+      'salon': 'サロン', 'nail': 'ネイル',
+      'esthetic': 'エステ', 'barber': 'バーバー',
+      'yoga': 'ヨガ', 'fitness': 'フィットネス',
+      'boxing': 'ボクシング', 'seitai': '整骨院', 'acupuncture': '鍼灸',
+      'dental': '歯科', 'pediatric': '小児科',
+      'ophthalmology': '眼科', 'internal-medicine': '内科', 'chiropractic': 'カイロ',
+      'floristry': '生花店', 'dance': 'ダンス', 'piano': 'ピアノ',
+      'music': '音楽教室', 'art': '絵画教室'
+    };
+
+    // 親→子の許可リスト（CEO 設計通り）。HTMLに無い子もここに書いておくと
+    // software-engineer-a が追加した時点で自動で出現する
+    const parentMap = {
+      'food': ['cafe','bakery','izakaya','ramen','sushi','bistro','wine','tea','craft-beer','korean-bbq','soba','ice-cream','crepe'],
+      'beauty': ['salon','nail','esthetic','barber'],
+      'wellness': ['yoga','fitness','boxing','seitai','acupuncture'],
+      'medical': ['dental','pediatric','ophthalmology','internal-medicine','chiropractic'],
+      'lifestyle': ['floristry','dance','piano','music','art']
+    };
+
+    // DOM 上に実在するカード数を集計（37件想定／実際は30件＋新規分）
+    function countCards(predicate) {
+      let n = 0;
+      showCards.forEach(c => { if (predicate(c)) n++; });
+      return n;
+    }
+
+    // 件数バッジ初期反映
+    function updateParentCounts() {
+      document.querySelectorAll('.count[data-count-for]').forEach(span => {
+        const key = span.dataset.countFor;
+        if (key === 'all') {
+          span.textContent = showCards.length;
+        } else {
+          span.textContent = countCards(c => c.dataset.parent === key);
+        }
+      });
+    }
+    updateParentCounts();
+
+    // 子チップエリアの開閉制御
+    function closeChild() {
+      childWrap.dataset.open = 'false';
+      childWrap.setAttribute('aria-hidden', 'true');
+      childWrap.innerHTML = '';
+    }
+    function openChild(parentKey) {
+      // 親に属し、かつ実カードが1件以上あるスラッグのみチップ化
+      const slugs = (parentMap[parentKey] || []).filter(slug => {
+        return countCards(c => c.dataset.category === slug) > 0;
+      });
+      // 「親カテゴリすべて」チップを先頭に
+      const html = [
+        `<button class="filter-btn child-btn active" data-child="__parent__" data-parent-key="${parentKey}" role="tab" aria-selected="true">この分類すべて <span class="count">${countCards(c => c.dataset.parent === parentKey)}</span></button>`
+      ];
+      slugs.forEach(slug => {
+        const cnt = countCards(c => c.dataset.category === slug);
+        const label = childLabels[slug] || slug;
+        html.push(`<button class="filter-btn child-btn" data-child="${slug}" role="tab" aria-selected="false">${label} <span class="count">${cnt}</span></button>`);
+      });
+      childWrap.innerHTML = html.join('');
+      childWrap.dataset.open = 'true';
+      childWrap.setAttribute('aria-hidden', 'false');
+      // 子チップにクリックハンドラ
+      childWrap.querySelectorAll('.child-btn').forEach(cb => {
+        cb.addEventListener('click', () => onChildClick(cb, parentKey));
+      });
+    }
+
+    // カード表示更新
+    function applyFilter({ parent = 'all', child = null } = {}) {
+      showCards.forEach(card => {
+        let visible = false;
+        if (parent === 'all') {
+          visible = true;
+        } else if (!child || child === '__parent__') {
+          visible = card.dataset.parent === parent;
+        } else {
+          visible = card.dataset.category === child;
+        }
+        card.dataset.hidden = visible ? 'false' : 'true';
+      });
+    }
+
+    // 親クリック
+    parentBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const parentKey = btn.dataset.parent;
+        // ボタン active 切り替え
+        parentBtns.forEach(b => {
+          const active = b === btn;
+          b.classList.toggle('active', active);
+          b.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+        if (parentKey === 'all') {
+          closeChild();
+          applyFilter({ parent: 'all' });
+        } else {
+          openChild(parentKey);
+          applyFilter({ parent: parentKey });
+        }
+      });
+    });
+
+    // 子クリック
+    function onChildClick(cb, parentKey) {
+      const childKey = cb.dataset.child;
+      childWrap.querySelectorAll('.child-btn').forEach(b => {
+        const active = b === cb;
         b.classList.toggle('active', active);
         b.setAttribute('aria-selected', active ? 'true' : 'false');
       });
-      showCards.forEach(card => {
-        const cat = card.dataset.category;
-        const visible = filter === 'all' || cat === filter;
-        card.dataset.hidden = visible ? 'false' : 'true';
-      });
-    });
-  });
+      applyFilter({ parent: parentKey, child: childKey });
+    }
+
+    // 初期: 「すべて」が active、子は閉じている（HTML 初期値どおり）
+  })();
 
   // Showcase v2: cards open live URL via overlay <a>. No modal needed.
-  // Legacy modal element kept hidden in DOM for safety; ignore if present.
 
   // URL parameter ?template=xxx → set form select on load
   const urlParams = new URLSearchParams(window.location.search);
