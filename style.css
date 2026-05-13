@@ -1156,7 +1156,19 @@ section { padding: var(--gap-xl) 0; }
   transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
 }
 .show-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
-.show-card[data-hidden="true"] { display: none; }
+/* 2026-05-12 mobile filter bug fix:
+   モバイル CSS (line ~1922) で `.show-card.v2 { display: flex !important }` を
+   後段で指定しているため、!important なしの display:none が上書きされて
+   モバイルでフィルタが効かなかった（CEO 報告）。
+   「隠す」側に !important を付けて、!important 同士で詳細度比較され
+   data-hidden 付きセレクタが勝つように修正。
+*/
+.show-card[data-hidden="true"],
+.show-card.v2[data-hidden="true"],
+.show-card[data-position="hidden"],
+.show-card.v2[data-position="hidden"] {
+  display: none !important;
+}
 .show-img {
   aspect-ratio: 16 / 10;
   overflow: hidden;
@@ -2309,9 +2321,10 @@ section { padding: var(--gap-xl) 0; }
    2026-05-12 Showcase 表示制限: デフォルト3件 + 「すべて見る」展開
    =========================================================================== */
 
-/* デフォルトで data-position 3以降のカードを隠す */
+/* デフォルトで data-position 3以降のカードを隠す
+   2026-05-12: !important 必須（モバイル `.show-card.v2 {display:flex!important}` 対策） */
 .showcase-grid.v2 .show-card.v2[data-position="hidden"] {
-  display: none;
+  display: none !important;
 }
 
 /* もっと見るボタンエリア */
